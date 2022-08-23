@@ -1,0 +1,112 @@
+1. What is javascript ?
+What is JavaScript?
+JavaScript (often shortened to JS) is a lightweight, interpreted, object-oriented language with first-class functions,
+and is best known as the scripting language for Web pages, but it's used in many non-browser environments as well.
+It is a prototype-based, multi-paradigm scripting language that is dynamic, and supports object-oriented, 
+imperative, and functional programming styles.
+
+JavaScript runs on the client side of the web, which can be used to design / program how the web pages behave on
+the occurrence of an event. JavaScript is an easy to learn and also powerful scripting language, widely used
+for controlling web page behavior.
+
+Contrary to popular misconception, JavaScript is not "Interpreted Java". In a nutshell, JavaScript is a dynamic 
+scripting language supporting prototype based object construction. The basic syntax is intentionally similar to 
+both Java and C++ to reduce the number of new concepts required to learn the language. Language constructs, 
+such as if statements, for and while loops, and switch and try ... catch blocks function the same as in these 
+languages (or nearly so).
+
+JavaScript can function as both a procedural and an object oriented language. Objects are created 
+programmatically in JavaScript, by attaching methods and properties to otherwise empty objects at run time,
+as opposed to the syntactic class definitions common in compiled languages like C++ and Java.
+Once an object has been constructed it can be used as a blueprint (or prototype) for creating similar objects.
+
+JavaScript's dynamic capabilities include runtime object construction, variable parameter lists, 
+function variables, dynamic script creation (via eval), object introspection (via for ... in), 
+and source code recovery (JavaScript programs can decompile function bodies back into their source text).
+
+For a more in depth discussion of JavaScript programming follow the JavaScript resources links below.
+
+What JavaScript implementations are available?
+The Mozilla project provides two JavaScript implementations. The first ever JavaScript was 
+created by Brendan Eich at Netscape, and has since been updated to conform to ECMA-262 
+Edition 5 and later versions. This engine, code named SpiderMonkey, is implemented in C/C++.
+ The Rhino engine, created primarily by Norris Boyd (also at Netscape) is a 
+ JavaScript implementation written in Java. Like SpiderMonkey, Rhino is ECMA-262 Edition 5 compliant.
+
+Several major runtime optimizations such as TraceMonkey (Firefox 3.5), JägerMonkey (Firefox 4) 
+and IonMonkey were added to the SpiderMonkey JavaScript engine over time. Work is always 
+ongoing to improve JavaScript execution performance.
+
+Besides the above implementations, there are other popular JavaScript engines such as:-
+
+Google's V8, which is used in the Google Chrome browser and recent versions of Opera browser. This is also the engine used by Node.js.
+The JavaScriptCore (SquirrelFish/Nitro) used in some WebKit browsers such as Apple Safari.
+Carakan in old versions of Opera.
+The Chakra engine used in Internet Explorer (although the language it implements is 
+formally called "JScript" in order to avoid trademark issues).
+Each of Mozilla's JavaScript engines expose a public API which application developers 
+can use to integrate JavaScript into their software. By far, the most common host environment
+ for JavaScript is web browsers. Web browsers typically use the public API to 
+ create host objects responsible for reflecting the DOM into JavaScript.
+
+Another common application for JavaScript is as a (Web) server side scripting language.
+A JavaScript web server would expose host objects representing a HTTP request and response objects,
+which could then be manipulated by a JavaScript program to dynamically generate web pages.
+Node.js is a popular example of this.
+
+
+2. What can we do with JavaScript or What is JavaScript used for?
+JavaScript is mainly used for web-based applications and web browsers. But JavaScript is also used beyond the Web in software, servers and embedded hardware controls. Here are some basic things JavaScript is used for:
+ frontend, backend, full stack
+    1.  Adding interactive behavior to web pages
+    JavaScript allows users to interact with web pages. There are almost no limits to the things you can do with JavaScript on a web page – these are just a few examples:
+
+    Show or hide more information with the click of a button
+
+    Change the color of a button when the mouse hovers over it
+
+    Slide through a carousel of images on the homepage
+
+    Zooming in or zooming out on an image
+
+    Displaying a timer or count-down on a website
+
+    Playing audio and video in a web page
+
+    Displaying animations
+
+    Using a drop-down hamburger menu
+
+    2. Creating web and mobile apps
+    Developers can use various JavaScript frameworks for developing and building web and mobile apps.
+    JavaScript frameworks are collections of JavaScript code libraries that provide developers with 
+    pre-written code to use for routine programming features and tasks—literally a framework to 
+    build websites or web applications around. 
+
+    Popular JavaScript front-end frameworks include React, React Native, Angular, and Vue.
+    Many companies use Node.js, a JavaScript runtime environment built on Google Chrome’s 
+    JavaScript V8 engine. A few famous examples include Paypal, LinkedIn, Netflix, and Uber!
+
+
+    3. Building web servers and developing server applications
+    Beyond websites and apps, developers can also use JavaScript to build simple web servers and develop the back-end infrastructure using Node.js. 
+
+    4. Game development
+    Of course, you can also use JavaScript to create browser games. These are a great way for beginning developers to practice their JavaScript skills. 
+
+3. What does javascript code run ?
+    browsers, servers, pc
+
+4. javascript vs ECMAScript ?
+    JavaScript
+        JavaScript was first known as LiveScript, but Netscape changed its name to JavaScript, 
+        possibly because of the excitement being generated by Java. 
+        JavaScript made its first appearance in Netscape 2.0 in 1995 with the name LiveScript. 
+        The general-purpose core of the language has been embedded in Netscape, Internet Explorer, 
+        and other web browsers.The standard of scripting languages like JavaScript is ECMAScript.
+    ECMAScript
+        The full form of ECMA is European Computer Manufacturer's Association. 
+        ECMAScript is a Standard for scripting languages such as JavaScript, JScript, etc.
+        It is a trademark scripting language specification. JavaScript is a language based on ECMAScript. 
+        A standard for scripting languages like JavaScript, JScript is ECMAScript. 
+        JavaScript is considered as one of the most popular implementations of ECMAScript.
