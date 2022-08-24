@@ -32,9 +32,28 @@ function App() {
         <p>Expression {(2+5)*25+65}</p>
         <p>Name { name }</p>
         <p>Name {person.name}, Job {person.job}, Age {person.age}</p>
+        
+        <Person></Person>
+        <Person></Person>
+
       </header>
     </div>
   );
+  
+  // function component
+  function Person() {
+    const personStyle = {
+      border: '2px solid green',
+      margin: '10px',
+      padding: '10px'
+    }
+
+    return <div style={{border: '1px solid green', padding: '10px', margin: '10px'}}>
+      <h1 style={personStyle}>Name: Person Component</h1>
+      <h3>Hero of the year</h3>
+    </div> 
+  };
+
 }
 
 export default App;
