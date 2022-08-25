@@ -37,6 +37,9 @@ function App() {
         <Person name="Shahriar hosen 1" age="28"></Person>
         <Person name="Shahriar hosen 2" age="29"></Person>
 
+        <Human name="Shahriar Hosen" job="Backend Developer"></Human>
+        <Human name="Shahriar Hosen" job="Web Developer"></Human>
+
       </header>
     </div>
   );
@@ -54,6 +57,13 @@ function App() {
       <h3>Hero of the year age {props.age}</h3>
     </div> 
   };
+
+  function Human(props) {
+    return <div style={{border: '2px solid yellow', padding: '10px', margin: '10px'}}>
+      <h3>Name: {props.name}</h3>
+      <h3>Name: {props.job}</h3>
+    </div>
+  }
 
 }
 
