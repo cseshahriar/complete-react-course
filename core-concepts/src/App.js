@@ -19,6 +19,12 @@ function App() {
     borderRadius: '5px',
   }
 
+  const products = [
+    {name: 'Product 1', price: 100},
+    {name: 'Product 2', price: 120},
+    {name: 'Product 1', price: 130},
+  ]
+
   return (
     <div className="App">
       <header className="App-header">
@@ -39,6 +45,19 @@ function App() {
 
         <Human name="Shahriar Hosen" job="Backend Developer"></Human>
         <Human name="Shahriar Hosen" job="Web Developer"></Human>
+
+        {/* product component */}
+        <div style={{width: '100%'}}>
+          <Product name="Photoshop" price="$90.00"></Product>
+          <Product name="Kitkat" price="$50.00"></Product>
+          <Product name="PDF Reader" price="$30.00"></Product>
+
+         {/* array access */}
+          <Product name={products[0].name} price={products[0].price}></Product>
+
+          {/* loop */}
+
+        </div>
 
       </header>
     </div>
@@ -64,6 +83,28 @@ function App() {
       <h3>Name: {props.job}</h3>
     </div>
   }
+
+
+  function Product(props) {
+    const productStyle = {
+      border: '1px solid gray',
+      borderRadius: '5px',
+      backgroundColor: 'green',
+      height: '300px',
+      width: '300px',
+      float: 'left',
+      margin: '15px',
+      padding: '15px',
+    }
+
+    return(
+      <div style={productStyle}>
+        <h3>Name: {props.name}</h3>
+        <h2>Price: {props.price}</h2>
+        <button>Buy now</button>
+      </div>
+    )
+  };
 
 }
 
