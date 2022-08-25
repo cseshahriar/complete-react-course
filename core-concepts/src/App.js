@@ -20,9 +20,9 @@ function App() {
   }
 
   const products = [
-    {name: 'Product 1', price: 100},
-    {name: 'Product 2', price: 120},
-    {name: 'Product 1', price: 130},
+    {name: 'Product 1', price: '100'},
+    {name: 'Product 2', price: '120'},
+    {name: 'Product 1', price: '130'},
   ]
 
   return (
@@ -51,9 +51,6 @@ function App() {
           <Product name="Photoshop" price="$90.00"></Product>
           <Product name="Kitkat" price="$50.00"></Product>
           <Product name="PDF Reader" price="$30.00"></Product>
-
-         {/* array access */}
-          <Product name={products[0].name} price={products[0].price}></Product>
 
           {/* loop */}
 
@@ -96,7 +93,6 @@ function App() {
       margin: '15px',
       padding: '15px',
     }
-
     return(
       <div style={productStyle}>
         <h3>Name: {props.name}</h3>
