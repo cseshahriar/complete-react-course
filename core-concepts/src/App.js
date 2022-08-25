@@ -33,15 +33,16 @@ function App() {
         <p>Name { name }</p>
         <p>Name {person.name}, Job {person.job}, Age {person.age}</p>
         
-        <Person></Person>
-        <Person></Person>
+        {/* props pass , props means properties, similer in component dynamic data  */} 
+        <Person name="Shahriar hosen 1" age="28"></Person>
+        <Person name="Shahriar hosen 2" age="29"></Person>
 
       </header>
     </div>
   );
   
   // function component
-  function Person() {
+  function Person(props) {
     const personStyle = {
       border: '2px solid green',
       margin: '10px',
@@ -49,8 +50,8 @@ function App() {
     }
 
     return <div style={{border: '1px solid green', padding: '10px', margin: '10px'}}>
-      <h1 style={personStyle}>Name: Person Component</h1>
-      <h3>Hero of the year</h3>
+      <h1 style={personStyle}>Name: {props.name}</h1> {/** props received */}
+      <h3>Hero of the year age {props.age}</h3>
     </div> 
   };
 
