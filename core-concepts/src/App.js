@@ -29,13 +29,15 @@ function App() {
   
   const productNames = products.map(product => product.name)  // arrow func return all product names
   const productObjects = products.map(product => product)  // arrow func return all product names
-  console.log('---------', 'product names ', productNames)
-  console.log('---------', 'product objects ', productObjects)
 
   const nayoks = [
     'Razzak', 'Anwar', 'Jafor', 'Alomgir', 'Salman'
   ]
 
+  const manus = [
+    {name: 'Shahiar', age:29},
+    {name: 'Salpin', age:28},
+  ]
 
   return (
     <div className="App">
@@ -72,6 +74,13 @@ function App() {
             products.map(product =>  <Product name={product.name} price={product.price}></Product>)
           }
         </div>
+        
+        <h3>Manus objects rendering</h3>
+        <div style={{width: '100%'}}>
+          {
+            manus.map(obj => <Manus obj={obj}></Manus>)
+          }
+        </div>
 
         {/* list looping */}
         <ul>
@@ -101,11 +110,11 @@ function App() {
   function Human(props) {
     return <div style={{border: '2px solid yellow', padding: '10px', margin: '10px'}}>
       <h3>Name: {props.name}</h3>
-      <h3>Name: {props.job}</h3>
+      <h3>age: {props.age}</h3>
     </div>
   }
 
-
+  // product component
   function Product(props) {
     const productStyle = {
       border: '1px solid gray',
@@ -120,7 +129,6 @@ function App() {
 
     // destructuring properties
     const {name, price } = products[0]
-    console.log(name, price)
     
     return(
       <div style={productStyle}>
@@ -130,6 +138,31 @@ function App() {
       </div>
     )
   };
+
+  // human component
+  function Manus(props) {
+    console.log('product', props);
+    
+    
+    const humanStyle = {
+      border: '1px solid gray',
+      borderRadius: '5px',
+      backgroundColor: 'green',
+      height: '300px',
+      width: '300px',
+      float: 'left',
+      margin: '15px',
+      padding: '15px',
+    }
+
+    return(
+      <div style={humanStyle}>
+        <h3>Name: {props.obj.name}</h3>
+        <h2>Age: {props.obj.age}</h2>
+        <button>Buy now</button>
+      </div>
+    )
+  }
 
 }
 
