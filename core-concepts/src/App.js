@@ -93,6 +93,11 @@ function App() {
       margin: '15px',
       padding: '15px',
     }
+
+    // destructuring properties
+    const {name, price } = products[0]
+    console.log(name, price)
+    
     return(
       <div style={productStyle}>
         <h3>Name: {props.name}</h3>
