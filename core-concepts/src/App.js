@@ -19,11 +19,23 @@ function App() {
     borderRadius: '5px',
   }
 
+  // list of objects
   const products = [
-    {name: 'Product 1', price: '100'},
-    {name: 'Product 2', price: '120'},
-    {name: 'Product 1', price: '130'},
+    {name: 'Photoshop', price: '100'},
+    {name: 'Illustrator', price: '120'},
+    {name: 'Quard Expression', price: '130'},
+    {name: 'PDF Reader', price: '130'},
   ]
+  
+  const productNames = products.map(product => product.name)  // arrow func return all product names
+  const productObjects = products.map(product => product)  // arrow func return all product names
+  console.log('---------', 'product names ', productNames)
+  console.log('---------', 'product objects ', productObjects)
+
+  const nayoks = [
+    'Razzak', 'Anwar', 'Jafor', 'Alomgir', 'Salman'
+  ]
+
 
   return (
     <div className="App">
@@ -51,10 +63,22 @@ function App() {
           <Product name="Photoshop" price="$90.00"></Product>
           <Product name="Kitkat" price="$50.00"></Product>
           <Product name="PDF Reader" price="$30.00"></Product>
-
-          {/* loop */}
-
         </div>
+
+        <h3>Product component looping</h3>
+        {/* looping */}
+        <div style={{width: '100%'}}>
+          {
+            products.map(product =>  <Product name={product.name} price={product.price}></Product>)
+          }
+        </div>
+
+        {/* list looping */}
+        <ul>
+          {
+            nayoks.map(nayok => <li>{nayok}</li>)
+          }
+        </ul>
 
       </header>
     </div>
