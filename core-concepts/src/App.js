@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -43,6 +44,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo"/>
+        
+        {/* counter for state */}
+        <Counter></Counter>
 
         <h1  style={style}>My first react heading</h1>
         <p style={{backgroundColor: 'cyan', color: 'black', padding:'10px', borderRadius: '5px'}}>
@@ -162,6 +166,26 @@ function App() {
         <button>Buy now</button>
       </div>
     )
+  }
+
+  
+  function Counter() {
+    
+    // state or react hook
+    const [count, setCounter] = useState(10);  // count is state
+
+    const handleIncrease = () => {    
+      setCounter(count + 1);
+    }
+    
+    return(
+      <div>
+        <h1>Count: {count}</h1>
+        <button onClick={handleIncrease}>Increase</button>
+        <button onClick={() => setCounter(count + 1)}>Increase</button>
+        <button onClick={() => setCounter(count - 1)}>Decrease</button>
+      </div>
+    );
   }
 
 }
