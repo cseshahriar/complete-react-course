@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -92,6 +92,9 @@ function App() {
             nayoks.map(nayok => <li>{nayok}</li>)
           }
         </ul>
+          
+
+        <Users></Users>
 
       </header>
     </div>
@@ -187,6 +190,31 @@ function App() {
       </div>
     );
   }
+
+  // users component
+  function Users() {
+    const [users, setUsers] = useState([]);
+
+    // auto call 
+    useEffect(() => {
+      // api call
+      fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => response.json())
+      .then(data => setUsers(data));
+    }, []) //initial null
+
+    console.log('users ', users)
+
+    return (
+      <div>
+        <h3>Get API Fetch</h3>
+        <ul>
+          { users.map(user => <li>{user.name}</li>)}
+        </ul>
+      </div>
+    );
+  }
+
 
 }
 
