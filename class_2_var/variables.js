@@ -36,8 +36,53 @@ Boolean type
 Null type
 Undefined type
 Number type
-BigInt type
 String type
 Symbol type
 Objects (collections of properties)
 */
+
+
+// cameCase
+// snake_case
+// PascalCase
+
+var firstName = "Shahriar"
+var lastName = "Hosen"
+
+const interestRate = 5.5;
+console.log(typeof interestRate);
+
+// let is global scope !
+// variable type var, let, const
+
+// string
+myName = "Shahriar"
+
+// number (it, float, double)
+// Boolean (true, false)
+// null
+// undefined
+// symbol
+
+// number literals
+let age = 28;
+
+// string literals
+let name = "Shahriar"
+
+// boolean literals
+let isMarried = True
+
+// null
+let selectProduct = null; // null is a value
+let selectColor = null; // '' rakbona future initialize korbo
+
+// undefined
+let message = undefined;
+let data; // undefined mane kono kicho define kora hoy nai
+
+
+// reference type 
+// object
+// array
+// function
