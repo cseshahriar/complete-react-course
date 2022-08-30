@@ -27,3 +27,31 @@ let value = "01710835653";
 info[key] = value;
 console.log(info);
 
+
+// array(object)
+let selectColors = ['red', 'blue', 'green', 'yellow']
+console.log(typeof selectColors);
+console.log(selectColors);
+console.log(selectColors[1]);
+console.log(selectColors.length);
+
+
+// arithmetics operators
+let num1 = 5;
+let num2 = 5;
+
+// function
+function sum(a, b) {
+    return a + b;
+}
+console.log(sum(4, 5));
+
+function weatherStatus(temperature) {
+    return temperature >= 25 ? console.log('Warm') : console.log('Cool');  // ternary
+}
+weatherStatus(20)
+
+console.log(true && false);
+console.log(true || false);
+
+
