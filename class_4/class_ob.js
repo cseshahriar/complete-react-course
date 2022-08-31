@@ -34,3 +34,17 @@ function createCircle(radius, location) {
 const circle1 = createCircle(5, {x: 2, y:-3});
 const circle2 = createCircle(5, {x: 2, y:-3});
 console.log(circle1);
+
+// ======================== function constructor ===========
+function CreateCircle(radius, location) {
+    this.radius = radius;  // this means this class
+    this.location = location;
+    this.draw = function() {  // method
+        console.log('Drawing');
+    },
+    this.move = function() {  // method
+        console.log("Moving");
+    }
+}
+const circle3 = new CreateCircle(5, {x:5, y:-3})
+console.log(circle3)
