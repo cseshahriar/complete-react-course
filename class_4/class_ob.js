@@ -50,4 +50,26 @@ function CreateCircle(radius, location) {
 const circle3 = new CreateCircle(5, {x:5, y:-3})
 console.log(circle3)
 console.log(circle3.radius)
+console.log(CreateCircle.length)
 // 1.08"
+
+
+// pass by reference
+const car = {
+    color: 'red',
+    brand: 'bmw'
+}
+
+const secondCar = car;
+car.wheel = 4;
+console.log(secondCar)
+
+// pass by value
+// pass by reference
+// shallow copy R&D
+
+
+const secondCard = {}
+for(let i in car) {
+    secondCar[i] = car[i];
+}
