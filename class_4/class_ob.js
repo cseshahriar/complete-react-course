@@ -37,6 +37,7 @@ console.log(circle1);
 
 // ======================== function constructor ===========
 function CreateCircle(radius, location) {
+    // this refers parent, so this refers CreateCircle
     this.radius = radius;  // this means this class
     this.location = location;
     this.draw = function() {  // method
@@ -48,3 +49,5 @@ function CreateCircle(radius, location) {
 }
 const circle3 = new CreateCircle(5, {x:5, y:-3})
 console.log(circle3)
+console.log(circle3.radius)
+// 1.08"
