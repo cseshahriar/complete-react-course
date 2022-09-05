@@ -54,22 +54,23 @@ console.log(CreateCircle.length)
 // 1.08"
 
 
-// pass by reference
-const car = {
-    color: 'red',
-    brand: 'bmw'
-}
+// object cloning 
 
-const secondCar = car;
-car.wheel = 4;
-console.log(secondCar)
+// pass by value if origin change latest not change
+console.log('\n\npass by value');
+let x = 10
+let y = x; // pass by value
+console.log(x, y); // 10 10
+x = 15;
+console.log(x, y); // 15 10
+
 
 // pass by value
-// pass by reference
-// shallow copy R&D
+console.log('\n\npass by value');
 
-
-const secondCard = {}
-for(let i in car) {
-    secondCar[i] = car[i];
+let number = 10; // Primitive type so pass by value 
+function increment(number) {
+    number++;
 }
+increment(number)
+console.log(number); // 10
