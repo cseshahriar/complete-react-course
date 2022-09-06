@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
 
 // component is reusable 
 function App() {
@@ -8,11 +9,14 @@ function App() {
 
   return (
     <div className="App">
-      <Nayok name='Jasim' age='20'></Nayok>
-      <Nayok name='Sakib' age='20'></Nayok>
-      <Nayok name='Salman' age=''></Nayok>
+
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Nayok name='Jasim' age='20'></Nayok>
+        <Nayok name='Sakib' age='20'></Nayok>
+        <Nayok name='Salman' age=''></Nayok>
+        
+        <MovieCounter></MovieCounter>
+
       </header>
 
     </div>
@@ -33,4 +37,34 @@ function Nayok(props) {
   </div> 
 }
 
+
+// component
+function MovieCounter() {
+  // state
+  const [count, setCount] = useState(0); 
+
+  // function
+  const increment = () => {
+    setCount(count + 1);
+  }
+
+  const decrement = () => {
+    setCount(count - 1);
+  }
+
+  return <div>
+    <button onClick={increment}>Add Movie</button>
+    <button onClick={decrement}>Remove Movie</button>
+    <h5>Numbers of movies: {count}</h5>
+    <MovieDisplay count={count}></MovieDisplay>
+  </div>
+}
+
+function MovieDisplay(props) {
+  return <h4>Movies I have acted: {props.count} </h4>
+}
+
+
 export default App;
+
+
