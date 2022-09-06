@@ -1,19 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 // component is reusable 
 function App() {
   // data
-  const nayoks = ['Jashim', 'Deepjol', 'Bapparaz'];
+  // const nayoks = ['Jashim', 'Deepjol', 'Bapparaz'];
+
+  const [users, setUsers] = useState([]);
+
+  // data load 
+  useEffect(() => { // auto call
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => setUsers(data))
+  }, []) 
+
 
   return (
     <div className="App">
 
       <header className="App-header">
-        <Nayok name='Jasim' age='20'></Nayok>
-        <Nayok name='Sakib' age='20'></Nayok>
-        <Nayok name='Salman' age=''></Nayok>
+      {
+        users.map(user => <Nayok name={user.name} age={user.age} key={user.id}></Nayok>)
+      }
+        
+        {/* <Nayok name='Sakib' age='20'></Nayok>
+        <Nayok name='Salman' age=''></Nayok> */}
         
         <MovieCounter></MovieCounter>
 
@@ -66,5 +79,3 @@ function MovieDisplay(props) {
 
 
 export default App;
-
-
