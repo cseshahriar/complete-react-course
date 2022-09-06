@@ -1,3 +1,10 @@
+============= pondit ===================
+class 01 - done 
+class 02 - done 
+class 03 - done
+class 04 - done(assignment shallow copy R&D)
+class 05 - done
+class 06 - 
 ============= cor concepts =============
 lecture 8 done 
 lecture 9 done 
