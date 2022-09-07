@@ -1,6 +1,8 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 
+import {Country, } from './Country';
+
 // component is reusable 
 function App() {
   const [users, setUsers] = useState([]);
@@ -14,6 +16,11 @@ function App() {
   }, []);
 
 
+  // child to parent
+  // handleAddCountry
+  const handleAddCountry = (country) => {
+    console.log('country added', country);
+  }
   
   // country api fetch
   const [countries, setCountries] = useState([]);
@@ -36,16 +43,13 @@ function App() {
       <header className="App-header">
       {
         users.map(user => <Nayok name={user.name} age={user.age} key={user.id}></Nayok>)
-      }
-        
-        {/* <Nayok name='Sakib' age='20'></Nayok>
-        <Nayok name='Salman' age=''></Nayok> */}
-        
+      }       
         <MovieCounter></MovieCounter>
         
         <h1>Country loaded: {countries.length}</h1>
+        <h4>Country added: </h4>
         {
-          countries.map(country => <Country country={country} key={country.alpha3Code}></Country>)
+          countries.map(country => <Country country={country} key={country.alpha3Code} handleAddCountry={handleAddCountry}></Country>)
         }
       </header>
     </div>
@@ -93,17 +97,16 @@ function MovieDisplay(props) {
   return <h4>Movies I have acted: {props.count} </h4>
 }
 
-function Country(props) {
-
+function Country1(props) {
   const countryStyle = {
     border: '2px solid purple',
-    margin: '20px',
-    padding: '20px',
-    width:"400px",
+    margin: '10px',
+    padding: '10px',
+    width:"100%"
   }
   const flagStyle = {
     width: "250px",
-    header: "100px"
+    header: "40px"
   }
   // destructuring
   const {name, population, region, flag} = props.country
@@ -114,6 +117,7 @@ function Country(props) {
     <img src={flag} alt={name} style={flagStyle} />
     <p>Population: {population}</p>
     <p>Region: {region}</p>
+    <button>Add Country</button>
 
   </div>
 }
