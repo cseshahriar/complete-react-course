@@ -1,7 +1,8 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 
-import {Country, } from './Country';
+import Country from './Country';
+import Cart from './components/cart/Cart';
 
 // component is reusable 
 function App() {
@@ -16,12 +17,16 @@ function App() {
   }, []);
 
 
+  const [cart, setCart] = useState([]);
+
   // child to parent
   // handleAddCountry
   const handleAddCountry = (country) => {
-    console.log('country added', country);
+    const newCart = [...cart, country]; //spread operators
+    setCart(newCart);
   }
-  
+
+
   // country api fetch
   const [countries, setCountries] = useState([]);
 
@@ -47,7 +52,10 @@ function App() {
         <MovieCounter></MovieCounter>
         
         <h1>Country loaded: {countries.length}</h1>
-        <h4>Country added: </h4>
+        <h4>Country added: { cart.length }</h4>
+
+        <Cart cart={cart}></Cart>
+
         {
           countries.map(country => <Country country={country} key={country.alpha3Code} handleAddCountry={handleAddCountry}></Country>)
         }

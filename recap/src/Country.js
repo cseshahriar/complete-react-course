@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Country(props) {
+function Country(props) {
     const countryStyle = {
       border: '2px solid purple',
       margin: '10px',
@@ -25,4 +25,6 @@ export function Country(props) {
       <p>Region: {region}</p>
       <button onClick={() => handleAddCountry(props.country)}>Add Country</button>
     </div>
-  }
+  };
+
+  export default Country;
