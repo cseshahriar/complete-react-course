@@ -68,3 +68,13 @@ const compare = (a, b) => {
 let sorted_courses = courses.sort(compare)
 console.log(sorted_courses);
 
+
+// join
+const nameStr = ['Md', 'Shahriar', 'Hosen']
+const fullName = nameStr.join('-')
+console.log(fullName);
+
+// separate
+const myArray = fullName.split("-"); // str method
+console.log(myArray);
+
