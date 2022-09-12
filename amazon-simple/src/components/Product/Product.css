@@ -6,6 +6,9 @@
     padding-bottom: 5px;
 }
 .product-img{}
+.product-img-div {
+    margin-right: 30px;
+}
 .product-name{
     color: blue;
     font-weight: 400;
@@ -16,4 +19,5 @@
     height: 30px;
     border: 1px solid darkgray;
     border-radius: 5px;
+    cursor: pointer;
 }
