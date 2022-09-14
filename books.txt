@@ -1,0 +1,7 @@
+JavaScript books references
+---------------------------
+1. javaScript the definitive guide 7 edition (resource guide)
+2. Eloquent javascript 3rd edition
+3. Head first javascript programming(how to it works, flow chart, alto)
+4. javaScript cookbook (exercise)
+5. You don't know javascript()
