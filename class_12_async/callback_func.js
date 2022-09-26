@@ -36,4 +36,7 @@ setTimeout(() => {
     console.log("This message is shown after 3 seconds");
 }, 3000);
 
-// A callback function can run after another function has finished
+// *** A callback function can run after another function has finished
+// When to Use a Callback?
+// Where callbacks really shine are in asynchronous functions, 
+// *** where one function has to wait for another function (like waiting for a file to load).
