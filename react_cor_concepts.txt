@@ -1,0 +1,13 @@
+React core concepts
+-------------------
+1) Components
+2) Props & state
+3) Events
+4) Conditional rendering
+5) List adt Tables
+6) forms & input elements
+7) Lifting state up(child to parent)
+8) composition & component tree
+
+tools:
+babel, webpack
