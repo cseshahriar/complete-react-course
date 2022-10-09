@@ -54,3 +54,48 @@ console.log('2 completed order for customer 1');
 */
 
 // callback queue
+// so asynchronously event are not our control, we can solve with callback
+
+
+// callback 
+console.log('callback \n\n');
+
+const takeOrder3 = (customer, callback) => {
+    console.log(`Take order for ${customer}`);
+    callback(customer);
+};
+
+const processedOrder3 = (customer, callback) => {
+    console.log(`Processed order for ${customer}`);
+
+    setTimeout(() => {
+        console.log('cooking completed');
+        console.log(`order processed for ${customer}`);
+        callback(customer);
+    }, 3000);   
+};
+
+
+const completeOrder3 = (customer) => {
+    console.log(`completed order for ${customer}`);
+}
+
+
+// func call
+takeOrder3('Shahriar', (customer) => {
+    // takeOrder after process return a callback processedOrder3
+    processedOrder3(customer, (customer) => {
+        // process order after process return a callback completeOrder3
+        completeOrder3(customer);
+    });
+});
+console.log('Hello');
+
+/**
+ * Take order for Shahriar
+ * Processed order for Shahriar
+ * Hello
+ * cooking completed
+ * order processed for Shahriar
+ * completed order for Shahriar
+*/
