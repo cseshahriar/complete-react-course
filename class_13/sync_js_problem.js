@@ -152,3 +152,34 @@ meeting
 // first resolve addToCalender
 // then resolve meeting
 // it's called promise chaining
+// so promise problem all data are not one then
+
+
+// =========== promise problem solve =====================
+console.log("\n\n")
+
+const promise1 = Promise.resolve(`Promise 1 resolved`)
+
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(`Promise 2 resolved`);
+    }, 2000);
+});
+
+// result is separate
+// promise1.then(response => console.log(response));
+// promise2.then(response => console.log(response));
+
+// result one response
+Promise.all([promise1, promise2])
+    .then(
+        response => {
+            console.log(response); // [ 'Promise 1 resolved', 'Promise 2 resolved' ]
+        }
+    )
+// multiple promise result at a time: [ 'Promise 1 resolved', 'Promise 2 resolved' ]
+
+
+// promise problem: then, then, then, then, then, then, then, then, then
+
+// =================== async await ============================================
