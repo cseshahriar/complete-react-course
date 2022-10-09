@@ -1,4 +1,4 @@
-// synchronous js execution line by line
+// =============== synchronous js execution line by line =============
 // js synchronous problem: execution stop
 const processOrder = (customer) => {
     console.log('Processing order for customer 1');
@@ -26,7 +26,8 @@ console.log('completed order for customer 1');
  */
 
 
-// blocking problem solution with asynchronous js
+
+// ==================== blocking problem solution with asynchronous js ========
 const processedOrder2 = (customer) => {
     console.log('2 Processing order for customer 1');
 
@@ -57,7 +58,8 @@ console.log('2 completed order for customer 1');
 // so asynchronously event are not our control, we can solve with callback
 
 
-// callback 
+
+// ================================== callback =========================== 
 console.log('callback \n\n');
 
 const takeOrder3 = (customer, callback) => {
@@ -99,3 +101,54 @@ console.log('Hello');
  * order processed for Shahriar
  * completed order for Shahriar
 */
+
+// callback hell problem // nested problem not readable, solve with promise
+
+
+
+// ======================== promise =====================================
+const hasMeeting = false;
+
+// promise created, promise hold value
+const meeting = new Promise((resolve, reject) => {
+    // do stuff
+    if(!hasMeeting) {
+        const meetingDetails = {
+            name: 'Technical Meeting',
+            location: 'Google  Meet',
+            time: '10.:00 PM'
+        }
+        resolve(meetingDetails);
+    } else {
+        reject(new Error('Meeting already scheduled!'));
+    }
+});
+
+// promise chaining
+const addToCalender = (meetingDetails) => {
+    // promise object received and return another promise object
+    const calender = `${meetingDetails.name} has been scheduled on ${meetingDetails.location} at ${meetingDetails.time}`;
+    return Promise.resolve(calender);
+}
+
+// promise call
+console.log('promise \n\n');
+
+meeting
+    .then(addToCalender) // first call addToCalender function and return a promise object
+    .then( // if resolve call then
+        (response) => { // receive first promise object
+            console.log(
+               JSON.stringify(response) // "Technical Meeting has been scheduled on Google  Meet at 10.:00 P
+            )
+        }
+    )
+    .catch( // if reject call catch
+        (err) => {
+            console.log(err)
+        }
+    );
+
+// first resolve addToCalender
+// then resolve meeting
+// it's called promise chaining
