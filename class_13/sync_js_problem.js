@@ -182,4 +182,26 @@ Promise.all([promise1, promise2])
 
 // promise problem: then, then, then, then, then, then, then, then, then
 
+
 // =================== async await ============================================
+console.log('\n\n');
+async function friendlyFunction() { // return a promise
+    return `hello`;
+}
+console.log(friendlyFunction()); // Promise { 'hello' }
+
+
+// convert promise tp async await
+// async code write synchronous way
+async function myMeeting() {
+    // then then chain remove
+    try {
+        const meetingDetails = await meeting; // await, waiting
+        const calender = await addToCalender(meetingDetails);
+        console.log(calender);
+    } catch (err) {
+        console.log(err);
+        
+    }
+}
+myMeeting();
