@@ -16,7 +16,26 @@ class App extends Component { // class base/stateful, smart component
     * 5. JSX
     */
     render() {
-        return <h1>Hello React, You are awesome</h1>
+        // JSX is a React extension to the JavaScript language syntax which provides a way to structure component rendering using syntax familiar to many developers. It is similar in appearance to HTML. 
+        // React extension to the JavaScript
+        // JSX stands for JavaScript XML.
+        // JSX makes it easier to write and add HTML in React.
+        // we can write html and js both easier
+
+
+        // js version
+        // return React.createElement('div', {className: 'App'}, [
+        //     React.createElement('h1', null, 'What is JXS?'),
+        //     React.createElement('p', null, "JSX is asesome and it's means javascript extension")
+        // ])
+        
+        
+        // jsx version
+        return(
+            <div className="App">
+                <h1>What is JSX?</h1>
+            </div>
+        ) 
     }
 }
 

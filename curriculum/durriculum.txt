@@ -6,8 +6,8 @@ Curriculum
     1.4. c. Installing necessary tools
     1.5. d. Variables - ok
     1.6. e. Constants - ok
-    1.7. f. Primitive types
-    1.8. g. Objects
+    1.7. f. Primitive types - ok
+    1.8. g. Objects - 0k
     1.9. h. Arrays
     1.10. i. Functions
     1.11. j. Loop
