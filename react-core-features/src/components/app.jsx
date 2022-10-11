@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import Profile from "./profile/index";
+// import Skills from './profile/Skills';
+
+import MyProps from './props';
 
 const MyComponent = () => <h1>My Component</h1>;
 
@@ -19,26 +22,16 @@ class App extends Component { // class base/stateful, smart component
     * 5. JSX
     */
     render() {
-        // jsx
-        const obj = {
-            id:1,
-            title: 'title 2'
-        }
-        const name = "Md Shahriar Hosen";
-        const bio = <div>
-            <h3>{name}</h3>
-            <p>Fullstack Developer</p>
-        </div>
-
         return (
             <div>
-                <h1 title="title" {...obj}>Hello React, You are awesome</h1>
-                <MyComponent/>
-                <p>{ new Date().toDateString() }</p>
-                <p>My name {name}</p>
-                { bio }
-
                 <Profile/>
+                {/*  
+                <div style={{marginTop:'30px', marginBottom: '30px'}}>
+                    <h3 style={{marginBottom: '20px'}}>List of Programmers</h3>
+                    <MyProps name="Shahriar Hosen"/>
+                    <MyProps name="Shorna"/>
+                </div>
+                 */}
             </div>
         )
     }

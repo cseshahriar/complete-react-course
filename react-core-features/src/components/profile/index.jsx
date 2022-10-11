@@ -8,6 +8,9 @@ import Links from './Links';
 
 class Profile extends React.Component {
     render() {
+        
+        console.log('Profile - ', this.props);
+
         return(
             <div className='container'>
                 <Bio/>
