@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Profile from "./profile/index";
 
 const MyComponent = () => <h1>My Component</h1>;
 
@@ -29,12 +30,15 @@ class App extends Component { // class base/stateful, smart component
             <p>Fullstack Developer</p>
         </div>
 
-        return (<div>
+        return (
+            <div>
                 <h1 title="title" {...obj}>Hello React, You are awesome</h1>
                 <MyComponent/>
                 <p>{ new Date().toDateString() }</p>
                 <p>My name {name}</p>
                 { bio }
+
+                <Profile/>
             </div>
         )
     }
