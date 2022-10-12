@@ -1,22 +1,21 @@
-getCustomer()
-    .then((customer) => {
-        console.log(customer);
+async function sentMoviesToUser() {
+    // work synchronous way
+    const customer = await getCustomer(1);
+    const movies = await getTopMovies(); // wait for customer
 
-        // get movies
-        getTopMovies()
-            .then((movies)=> {
-                console.log(movies);
-
-                // if customer is premium
-                if(customer.isPremium) {
-                    // send email
-                    sendEmail(customer.email)
-                        .then ((movies) => {
-                            console.log(movies)
-                        })
-                }
+    // if customer is premium
+    if(customer.isPremium) {
+        // send email
+        sendEmail(customer.email, movies)
+        .then((response) => {
+            console.log(
+                `The email has ben sent to ${response.to} with subject ${response.subject} body ${response.text}`
+            )
         })
-    })
+    }
+}
+sentMoviesToUser();
+
  
 function getCustomer(id) {
     return new Promise((resolve, reject) => {
@@ -25,7 +24,7 @@ function getCustomer(id) {
                 id: 1,
                 name: 'Shahriar',
                 isPremium: true,
-                email: 'email'
+                email: 'shosen@me.com'
             }
             resolve(customer);
         }, 4000);
