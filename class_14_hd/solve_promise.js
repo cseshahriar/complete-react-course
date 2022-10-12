@@ -48,17 +48,6 @@ function getTopMovies() {
     })
 }
 
-  
-function sendEmail(movies) {
-    // send email for customer
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(movies)
-        })
-    })
-}
-
-
 function sendEmail(email, movies) {
     return new Promise(function (resolve, reject) {
         setTimeout(() => {
