@@ -38,6 +38,24 @@ class App extends Component { // class base/stateful, smart component
     * 5. JSX
     */
 
+    // state is component self data
+    
+    // constructor
+    constructor(props) {
+        super(props)
+        this.count = 0 // property
+        // this.state = {
+        //     count: 0
+        // }
+    }
+
+    // property new style
+    countProperty = 10
+
+    state = {
+        finalCount: 0
+    };
+
     // function pass child component
    getContext(context) {
        console.log(context);
@@ -45,7 +63,8 @@ class App extends Component { // class base/stateful, smart component
    
    render() {
         this.getContext(this); 
-    
+        console.log(this.count);
+
         return (
             <div>
                 <Profile/>
@@ -56,13 +75,26 @@ class App extends Component { // class base/stateful, smart component
                     <MyProps name="Shorna"/>
                 </div>
                  */}
-                 <h1>Pass function as a props</h1>
-                 <Child func={this.getContext}/>
+                <h1>Pass function as a props</h1>
+                <Child func={this.getContext}/>
 
-                 <ChildComponent>
+                <ChildComponent>
                     <h2>Hello, I am from parent</h2>
                     <h4>I am child of  child component</h4>
-                 </ChildComponent>
+                </ChildComponent>
+
+
+                <h1>Count {this.state.count}</h1>
+                <button onClick={() => {
+                    this.setState({count: this.state.count + 1});
+                }}>Increment</button>
+
+                <h1>Count {this.state.finalCount}</h1>
+                <button onClick={
+                    () => {
+                        this.setState({finalCount: this.state.finalCount + 1})
+                    }
+                }>Increment</button>
 
             </div>
         )
