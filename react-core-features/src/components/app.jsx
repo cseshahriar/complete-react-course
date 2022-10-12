@@ -6,12 +6,21 @@ import MyProps from './props';
 
 const MyComponent = () => <h1>My Component</h1>;
 
+const ChildComponent = props => (
+    <div>
+        <h3>I am child component</h3>
+        <p>I don't know what to do</p>
+        {props.children}
+    </div>
+)
+
 class Child extends React.Component {
     render() {
         this.props.func(this)
         return <h1>I am child component</h1>
     }
 }
+
 
 class App extends Component { // class base/stateful, smart component
     // component have to layer 1. data 2. representation
@@ -49,6 +58,12 @@ class App extends Component { // class base/stateful, smart component
                  */}
                  <h1>Pass function as a props</h1>
                  <Child func={this.getContext}/>
+
+                 <ChildComponent>
+                    <h2>Hello, I am from parent</h2>
+                    <h4>I am child of  child component</h4>
+                 </ChildComponent>
+
             </div>
         )
     }
