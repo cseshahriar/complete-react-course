@@ -25,7 +25,7 @@ function getCustomer(id) {
                 id: 1,
                 name: 'Shahriar',
                 isPremium: true,
-                email: 'email'
+                email: 'shosen@gmail.com'
             }
             resolve(customer);
         }, 4000);
