@@ -53,14 +53,44 @@ class App extends Component { // class base/stateful, smart component
     countProperty = 10
 
     state = {
-        finalCount: 0
+        finalCount: 0,
+        lotOfProperties: {},
+        timerCount: 0
     };
 
     // function pass child component
    getContext(context) {
        console.log(context);
    }
-   
+    
+    incrementCount = () => {    
+        this.setState({timerCount: this.state.timerCount + 1});
+    };
+    
+    decrementCount = () => {   
+        if(this.state.timerCount > 0) {
+            this.setState({timerCount: this.state.timerCount - 1 });
+        } 
+    };
+    
+    intervalId = null;
+    startTimer = () => {
+        if(this.state.timerCount > 0 && !this.intervalId) {
+            this.intervalId = setInterval(() => {
+                this.setState(
+                    {timerCount: this.state.timerCount - 1},
+                    () => {
+                        if(this.state.timerCount == 0) {
+                            alert('Timer Finished');
+                            clearInterval(this.intervalId);
+                            this.intervalId = null;
+                        }
+                    }
+                );
+            }, 1000)
+        }
+    }
+
    render() {
         this.getContext(this); 
         console.log(this.count);
@@ -92,10 +122,27 @@ class App extends Component { // class base/stateful, smart component
                 <h1>Count {this.state.finalCount}</h1>
                 <button onClick={
                     () => {
-                        this.setState({finalCount: this.state.finalCount + 1})
+                        this.setState(prev => {
+                            return {
+                                finalCount: prev.finalCount + 1
+                            }
+                        }, () => {
+                            console.log(this.state.finalCount)
+                        })
                     }
                 }>Increment</button>
 
+
+                {/** state counter project */}
+                <h1>Simple Timer</h1>
+                <button onClick={this.incrementCount} style={{marginRight: '10px'}}>+</button> 
+                <span>{this.state.timerCount}</span>
+                <button onClick={this.decrementCount} style={{marginLeft: '10px', marginRight: '10px'}}>-</button>
+                
+                <button onClick={this.startTimer} style={{marginRight: '10px'}}>Start</button>
+                <button style={{marginRight: '10px'}}>Stop</button>
+                <button style={{marginRight: '10px'}}>Reset</button>
+                
             </div>
         )
     }
