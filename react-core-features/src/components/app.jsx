@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import Profile from "./profile/index";
 // import Skills from './profile/Skills';
-
+import Button from "./Button";
 import MyProps from './props';
 
 const MyComponent = () => <h1>My Component</h1>;
+
 
 const ChildComponent = props => (
     <div>
@@ -176,6 +177,10 @@ class App extends Component { // class base/stateful, smart component
                     fontWeight: 500,
                     fontFamily: 'Arial',
                     fontSize: '32px'}}>Third Header</h3>
+
+                <Button className="btn">Click me</Button>
+                <Button className="btn">Click me</Button>
+                <button>Another</button>
             </div>
         )
     }
