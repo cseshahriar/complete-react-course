@@ -27,6 +27,12 @@ const myHeaderCss = {
     fontFamily: 'Helvetica',
     fontSize: '36px'
 }
+const anotherHeaderCss = {
+    color: 'green',
+    fontWeight: 500,
+    fontFamily: 'Arial',
+    fontSize: '32px'
+}
 
 class App extends Component { // class base/stateful, smart component
     // component have to layer 1. data 2. representation
@@ -164,6 +170,12 @@ class App extends Component { // class base/stateful, smart component
 
                 {/** inline style */}
                 <h1 style={myHeaderCss}>Inline style</h1>
+                <h2 style={anotherHeaderCss}>Another Header Tag</h2>
+                <h3 style={
+                    {color: 'orange',
+                    fontWeight: 500,
+                    fontFamily: 'Arial',
+                    fontSize: '32px'}}>Third Header</h3>
             </div>
         )
     }
