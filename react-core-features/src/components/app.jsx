@@ -21,6 +21,12 @@ class Child extends React.Component {
     }
 }
 
+const myHeaderCss = {
+    color: 'blue',
+    fontWeight: 700,
+    fontFamily: 'Helvetica',
+    fontSize: '36px'
+}
 
 class App extends Component { // class base/stateful, smart component
     // component have to layer 1. data 2. representation
@@ -155,7 +161,9 @@ class App extends Component { // class base/stateful, smart component
                 <button onClick={this.startTimer} style={{marginRight: '10px'}}>Start</button>
                 <button onClick={this.stopTimer} style={{marginRight: '10px'}}>Stop</button>
                 <button onClick={this.resetTimer} style={{marginRight: '10px'}}>Reset</button>
-                
+
+                {/** inline style */}
+                <h1 style={myHeaderCss}>Inline style</h1>
             </div>
         )
     }
@@ -181,3 +189,11 @@ function MyFunctionBaseComponent() {
 const AnotherFunctionalComponent = () => {
     <h1>Hello React, You are awesome</h1>
 }
+
+/**
+ * There are four main method to style react app
+ * - Inline
+ * - CSS class
+ * - CSS Module
+ * - JSS(style Component)
+ */
