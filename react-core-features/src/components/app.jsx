@@ -73,6 +73,7 @@ class App extends Component { // class base/stateful, smart component
         } 
     };
     
+    // ====================== timer ===========================================
     intervalId = null;
     startTimer = () => {
         if(this.state.timerCount > 0 && !this.intervalId) {
@@ -87,8 +88,20 @@ class App extends Component { // class base/stateful, smart component
                         }
                     }
                 );
-            }, 1000)
+            }, 1000) // update every 1 second
         }
+    }
+
+    stopTimer = () => {
+        if(this.intervalId) {
+            clearInterval(this.intervalId)
+            this.intervalId = null
+        }
+    }
+    resetTimer = () => {
+        this.setState({timerCount: 0});
+        clearInterval(this.intervalId)
+        this.intervalId = null
     }
 
    render() {
@@ -140,8 +153,8 @@ class App extends Component { // class base/stateful, smart component
                 <button onClick={this.decrementCount} style={{marginLeft: '10px', marginRight: '10px'}}>-</button>
                 
                 <button onClick={this.startTimer} style={{marginRight: '10px'}}>Start</button>
-                <button style={{marginRight: '10px'}}>Stop</button>
-                <button style={{marginRight: '10px'}}>Reset</button>
+                <button onClick={this.stopTimer} style={{marginRight: '10px'}}>Stop</button>
+                <button onClick={this.resetTimer} style={{marginRight: '10px'}}>Reset</button>
                 
             </div>
         )
