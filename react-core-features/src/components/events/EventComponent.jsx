@@ -15,7 +15,7 @@ class EventComponent extends Component {
         this.setState({ name: event.target.value });
     }
     state = { // v-model
-        name: 'Shahriar Hosen' 
+        name: '' 
     }
 
     render() {
@@ -24,11 +24,11 @@ class EventComponent extends Component {
                 <h1>Event in react</h1>
                 <button onClick={this.handleButtonClick}>Click Me</button>
                 
-                
+
                 {/* must on change for input with state */}
                 <input onChange={this.handleInputClick} type="text" placeholder='Please enter' value={this.state.name}/> 
                 {/**  two way data binding */}
-                <p>{this.state.name}</p>
+                {this.state.name && <p>Welcome {this.state.name}</p>} {/* conditional rendering */}
 
             </div>
         );
