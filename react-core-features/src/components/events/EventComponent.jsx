@@ -14,9 +14,21 @@ class EventComponent extends Component {
         console.log(event.target.value);
         this.setState({ name: event.target.value });
     }
+    handleFocus = (event) => {
+        console.log('I am focused event');
+    }
+    handleBlur = (event) => {
+        if(!this.state.name) {
+            alert('Please enter your name');
+        }
+        console.log('I am blur event');
+    }
+
+
     state = { // v-model
         name: '' 
     }
+
 
     render() {
         return(
@@ -26,7 +38,11 @@ class EventComponent extends Component {
                 
 
                 {/* must on change for input with state */}
-                <input onChange={this.handleInputClick} type="text" placeholder='Please enter' value={this.state.name}/> 
+                <input 
+                onChange={this.handleInputClick}
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                type="text" placeholder='Please enter' value={this.state.name}/> 
                 {/**  two way data binding */}
                 {this.state.name && <p>Welcome {this.state.name}</p>} {/* conditional rendering */}
 
