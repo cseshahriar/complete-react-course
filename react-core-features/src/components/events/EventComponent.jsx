@@ -9,8 +9,13 @@ class EventComponent extends Component {
         console.log('button clicked');
     }
 
+    // two way data binding
     handleInputClick = (event) => {
         console.log(event.target.value);
+        this.setState({ name: event.target.value });
+    }
+    state = { // v-model
+        name: 'Shahriar Hosen' 
     }
 
     render() {
@@ -18,8 +23,13 @@ class EventComponent extends Component {
             <div>
                 <h1>Event in react</h1>
                 <button onClick={this.handleButtonClick}>Click Me</button>
+                
+                
+                {/* must on change for input with state */}
+                <input onChange={this.handleInputClick} type="text" placeholder='Please enter' value={this.state.name}/> 
+                {/**  two way data binding */}
+                <p>{this.state.name}</p>
 
-                <input onChange={this.handleInputClick} type="text" placeholder='Please enter'/> 
             </div>
         );
     }
