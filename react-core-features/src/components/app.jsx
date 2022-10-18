@@ -3,6 +3,7 @@ import Profile from "./profile/index";
 // import Skills from './profile/Skills';
 import Button from "./Button";
 import MyProps from './props';
+import EventComponent from "./events/EventComponent";
 
 const MyComponent = () => <h1>My Component</h1>;
 
@@ -181,6 +182,9 @@ class App extends Component { // class base/stateful, smart component
                 <Button className="btn">Click me</Button>
                 <Button className="btn">Click me</Button>
                 <button>Another</button>
+                
+                {/** events */}
+                <EventComponent/>
             </div>
         )
     }
