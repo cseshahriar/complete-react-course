@@ -9,11 +9,17 @@ class EventComponent extends Component {
         console.log('button clicked');
     }
 
+    handleInputClick = (event) => {
+        console.log(event.target.value);
+    }
+
     render() {
         return(
             <div>
                 <h1>Event in react</h1>
                 <button onClick={this.handleButtonClick}>Click Me</button>
+
+                <input onChange={this.handleInputClick} type="text" placeholder='Please enter'/> 
             </div>
         );
     }
