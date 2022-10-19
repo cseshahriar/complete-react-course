@@ -8,7 +8,8 @@ class Inputs extends React.Component {
         bio: '',
         birthDay: '',
         gender: '',
-        agree: false
+        agree: false,
+        skills: []
     }
 
     handleChange = event => {
@@ -26,9 +27,16 @@ class Inputs extends React.Component {
             }
         )
     }
+    handleSkillsChange = event => {
+        if(event.target.checked) {
+            this.setState(
+                {skills: [...this.state.skills, event.target.value]}
+            )
+        }
+    }
 
     render() {
-        const { name, country, bio, birthDay, agree } = this.state
+        const { name, country, bio, birthDay, agree, skills} = this.state
 
         return (
             <div style={{padding: '15px', margin:'15px', border: '1px solid black'}}>
@@ -67,6 +75,33 @@ class Inputs extends React.Component {
                 </div>
                 <div>
                     <input type="checkbox" name="agree" onChange={this.handleCheckBox} checked={agree} /> I Agree
+                </div>
+
+                <div>
+                    Skills: <br/>
+                    <input 
+                        type="checkbox"
+                        name="skills"
+                        value="Java"
+                        checked={skills.includes('Java')}
+                        onChange={this.handleSkillsChange}
+                    /> Java
+
+                    <input 
+                        type="checkbox"
+                        name="skills"
+                        value="Python"
+                        checked={skills.includes('Python')}
+                        onChange={this.handleSkillsChange}
+                    /> Python
+
+                    <input 
+                        type="checkbox"
+                        name="skills"
+                        value="JavaScript"
+                        checked={skills.includes('JavaScript')}
+                        onChange={this.handleSkillsChange}
+                    /> JavaScript
                 </div>
 
                 <button type="submit" className="btn btn-primary" onClick={ () => console.log(this.state) }>Submit</button>
