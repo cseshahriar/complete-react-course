@@ -6,7 +6,9 @@ class Inputs extends React.Component {
         name: '',
         country: '',
         bio: '',
-        birthDay: ''
+        birthDay: '',
+        gender: '',
+        agree: false
     }
 
     handleChange = event => {
@@ -17,9 +19,16 @@ class Inputs extends React.Component {
           }  
         )
     } 
+    handleCheckBox = event => {
+        this.setState(
+            {
+                agree: event.target.checked
+            }
+        )
+    }
 
     render() {
-        const { name, country, bio, birthDay } = this.state
+        const { name, country, bio, birthDay, agree } = this.state
 
         return (
             <div style={{padding: '15px', margin:'15px', border: '1px solid black'}}>
@@ -51,6 +60,14 @@ class Inputs extends React.Component {
                     onChange={this.handleChange}
                     value="birthDay"
                 />
+
+                <div>
+                    <input type="radio" name="gender" value="Male"   onChange={this.handleChange}/> Male
+                    <input type="radio" name="gender" value="Female"  onChange={this.handleChange}/> Female
+                </div>
+                <div>
+                    <input type="checkbox" name="agree" onChange={this.handleCheckBox} checked={agree} /> I Agree
+                </div>
 
                 <button type="submit" className="btn btn-primary" onClick={ () => console.log(this.state) }>Submit</button>
             </div>
