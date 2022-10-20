@@ -6,6 +6,7 @@ import MyProps from './props';
 import EventComponent from "./events/EventComponent";
 import Inputs from "./inputs";
 import UnControlledForm from "./inputs/UnControlledForm";
+import ControlledForm from "./inputs/ControlledForm";
 
 const MyComponent = () => <h1>My Component</h1>;
 
@@ -192,6 +193,8 @@ class App extends Component { // class base/stateful, smart component
                 <Inputs/>
 
                 <UnControlledForm/>
+
+                <ControlledForm/>
             </div>
         )
     }
