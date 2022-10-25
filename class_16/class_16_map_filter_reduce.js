@@ -65,8 +65,9 @@ const users = [
 ]
 //  create an array that contains full name of each person who are older than 30
 const fullNames = users.filter(
-    (x) => {
-        x.age > 30
-    }
+    ({firstName, lastName, age}) => age > 30
 )
-console.log(fullNames)
+fullNamesMap = fullNames.map(({firstName, lastName, age}) => {
+    return {['fullName']: firstName + ' ' + lastName, ['age']: age}
+});
+console.log(fullNamesMap)
