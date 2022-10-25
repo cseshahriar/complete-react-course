@@ -15,3 +15,5 @@ fullNames = filteredUsers.map(({firstName, lastName, age}) => {
     return {['fullName']: firstName + ' ' + lastName, ['age']: age}
 });
 console.log(fullNames)
+
+// array.prototype.map()
