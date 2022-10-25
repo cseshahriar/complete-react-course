@@ -20,7 +20,11 @@ console.log(doubleArray)  // [ 4, 8, 12, 2, 6 ]
 const roots = arr.map((num) => Math.sqrt(num));
 
 
-// ============ filter ============
+
+
+
+
+// =============================== filter ====================================
 const filterArr = arr.filter((x) => x > 3)
 console.log(filterArr)  // [ 4, 6 ]
 
