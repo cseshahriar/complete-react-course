@@ -9,6 +9,8 @@ import UnControlledForm from "./inputs/UnControlledForm";
 import ControlledForm from "./inputs/ControlledForm";
 import DryForm from "./split-form";
 
+import SignupForm from './signup-form/index';
+
 const MyComponent = () => <h1>My Component</h1>;
 
 
@@ -198,6 +200,10 @@ class App extends Component { // class base/stateful, smart component
                 <ControlledForm/>
 
                 <DryForm/>
+
+                    {/** signup form  */}
+                <SignupForm/>
+
             </div>
         )
     }
