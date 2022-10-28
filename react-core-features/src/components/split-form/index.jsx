@@ -29,6 +29,15 @@ class SplitForm extends React.Component {
         })
     }
 
+    validate = () => {
+        const errors = {}
+        const {values: {name, email, password, gender}} = this.state
+
+        if(this.state.name) {
+
+        }
+    }
+
     render() {
         
         const { name, email, password } = this.state

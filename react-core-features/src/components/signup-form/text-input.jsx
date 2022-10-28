@@ -7,13 +7,14 @@ const TextInput = props => (
         <label>{props.label}</label>
         <input 
             type={props.type}
-            className="form-control"
+            className={props.error ? "form-control is-invalid": "form-control"}
             id={props.name}
             name={props.name}
             value={props.value}
             placeholder={props.placeholder}
             onChange={props.onChange}
         />
+        {props.error && <div className="invalid-feedback">{props.error}</div>}
     </div>
 )
 
@@ -24,6 +25,7 @@ TextInput.propTypes = {
     placeholder: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    error: PropTypes.string
 }
 
 TextInput.defaultProps = {
