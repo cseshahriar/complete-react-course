@@ -29,3 +29,10 @@ const reFormatArray = kvArray.map(
     ({key, value}) => ({[key]: value})
 );
 console.log(reFormatArray)
+
+
+let numbers2 = [1, 2, 3, 4, 5, 6];
+data = numbers2.map((el) => {
+  return el * 2;
+}); // return new array, iterate every element and modify
+console.log(data)

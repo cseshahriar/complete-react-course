@@ -1,0 +1,7 @@
+npx create-react-app do the bellow tasks:
+-----------------------------------------
+# run development server
+# webpack make bundle
+# babel compile the project
+
+# index.js entry point
