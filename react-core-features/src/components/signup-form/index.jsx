@@ -41,7 +41,7 @@ class SignupForm extends React.Component {
         if(isValid) {
             console.log(this.state.values);
             event.target.reset();
-            this.setState({values: initValues, agreement: false})
+            this.setState({values: initValues, agreement: false, errors: {} })
         } else {
             this.setState({errors})
         }
