@@ -13,18 +13,10 @@ class App extends Component {
     }
   }
   
-
-  filterList() {
-    let users = this.state.users;
-    users = users.filter((user) => user.name.toLowerCase().includes(this.state.q));
-    this.setState({users: users });
-  }
-
   // handleSearch
   handleSearch = event => {
     const q = event.target.value.toLowerCase();
-    this.setState({q:q});
-    this.filterList()
+    this.setState({q});
   }
 
   componentDidMount() {
