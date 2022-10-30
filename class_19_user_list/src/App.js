@@ -8,8 +8,23 @@ class App extends Component {
     super();
 
     this.state = {
-      users: []
+      users: [],
+      q: ''
     }
+  }
+  
+
+  filterList() {
+    let users = this.state.users;
+    users = users.filter((user) => user.name.toLowerCase().includes(this.state.q));
+    this.setState({users: users });
+  }
+
+  // handleSearch
+  handleSearch = event => {
+    const q = event.target.value.toLowerCase();
+    this.setState({q:q});
+    this.filterList()
   }
 
   componentDidMount() {
@@ -27,16 +42,23 @@ class App extends Component {
     return(
       <div className="container py-5">
           <div className="row">
-            <div className="col-12">
-                <form className="form-inline">
-                    <label className="sr-only">Search</label>
-                    <input type="text" name="search" className="form-control mb-2 mr-sm-2" placeholder="Search"/>
-                </form>
-            </div>
+              <div className="col-12">
+                  <form className="form-inline">
+                      <label className="sr-only">Search</label>
+                      <input 
+                        type="text"
+                        name="q"
+                        className="form-control mb-2 mr-sm-2"
+                        placeholder="Search by Name"
+                        value={this.state.q}
+                        onChange={this.handleSearch}
+                      />
+                  </form>
+              </div>
+
 
             <div className="col-12">
                   <h1 className="mt-5">User List</h1>
-                  
                   <table className="table">
                     <thead>
                       <tr>
@@ -52,25 +74,30 @@ class App extends Component {
                     <tbody>
                       {
                         this.state.users.length > 0 ? 
-                        this.state.users.map((user) => {
+                        this.state.users.filter(
+                            (user) => user.name.toLowerCase().includes(this.state.q)
+                        ).map((user) => {
                           return <tr key={user.id}>
-                            <th scope="row">{user.id}</th>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.phone}</td>
-                            <td>{user.company.name}</td>
-                            <td>
-                              <button className="btn btn-primary btn-success">Remove</button>
-                            </td>
-                          </tr>
-                        }) : <h1>Fetching user information</h1>
+                                <th scope="row">{user.id}</th>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phone}</td>
+                                <td>{user.company.name}</td>
+                                <td>
+                                  <button className="btn btn-primary btn-success">Remove</button>
+                                </td>
+                            </tr>
+                        }) : 
+                        <tr>
+                          <td>
+                            <h1>Fetching user information</h1>
+                          </td>
+                        </tr>
                       }
                     </tbody>
                   </table>
-
             </div>
           </div>
-          
         </div>
     )
   }
