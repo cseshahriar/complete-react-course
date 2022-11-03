@@ -31,6 +31,17 @@ class App extends Component {
   }
 
   render () {
+
+    // filter users
+    const filterUsers = this.state.users.filter(
+      (user) => {
+        return user.name.toLowerCase().includes(this.state.q);
+      }
+    )
+
+    const {users, q} = this.state;
+    const {handleSearch} = this;
+
     return(
       <div className="container py-5">
           <div className="row">
@@ -42,8 +53,8 @@ class App extends Component {
                         name="q"
                         className="form-control mb-2 mr-sm-2"
                         placeholder="Search by Name"
-                        value={this.state.q}
-                        onChange={this.handleSearch}
+                        value={q}
+                        onChange={handleSearch}
                       />
                   </form>
               </div>
@@ -65,10 +76,8 @@ class App extends Component {
 
                     <tbody>
                       {
-                        this.state.users.length > 0 ? 
-                        this.state.users.filter(
-                            (user) => user.name.toLowerCase().includes(this.state.q)
-                        ).map((user) => {
+                        filterUsers.length > 0 ? 
+                        filterUsers.map((user) => {
                           return <tr key={user.id}>
                                 <th scope="row">{user.id}</th>
                                 <td>{user.name}</td>
