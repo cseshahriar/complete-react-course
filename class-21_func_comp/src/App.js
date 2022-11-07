@@ -31,7 +31,7 @@ const App = () => {
     });
     setFilteredUsers(newFilteredUsers);
     console.log('filteredUsers ', filteredUsers)
-  }, []) // [] one time run, side effect
+  }, [q, users]) // every change callback
 
 
   return (
