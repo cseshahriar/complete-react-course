@@ -1,7 +1,12 @@
 import React from 'react';
-import './App.css';
+import { Routes, Route,} from "react-router-dom";
+
 import Dashboard from './components/dashboard/dashboard.component';
 import AppNavbar from './components/navbar/navbar.component';
+import Home from './components/home/home.component';
+import PageNotFound from './components/message/pagenotfound.component';
+
+import './App.css';
 
 // pure function
 const App = () => {
@@ -9,7 +14,11 @@ const App = () => {
   return (
     <div className="App">
       <AppNavbar/>
-      <Dashboard/>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='*' element={<PageNotFound/>}/>
+      </Routes>
     </div>
   );
 }
