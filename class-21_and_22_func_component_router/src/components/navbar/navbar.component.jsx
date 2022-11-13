@@ -10,17 +10,11 @@ const AppNavbar = () => {
     return(
         <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">App Name</Navbar.Brand>
+          <Navbar.Brand as={Link} to={"/"}>App Name</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">
-              <Link to="/">Home</Link>
-            </Nav.Link>
-            <Nav.Link href="/dashboard">
-              <Link to="/dashboard">Dashboard</Link>
-            </Nav.Link>
-            <Nav.Link href="/404">
-            <Link to="/dfdfdf">Error</Link>
-            </Nav.Link>
+            <Nav.Link as={Link} to={'/home'}>Home</Nav.Link>
+            <Nav.Link as={Link} to={'dashboard'}>Dashboard</Nav.Link>
+            <Nav.Link as={Link} to={"/404"}>Error</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

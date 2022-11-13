@@ -2,9 +2,13 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 
+import UserProfile from '../components/userprofile.component';
+import { useNavigate } from "react-router-dom";
+ 
 const DataCard = (props) => {
     const {id, name, email} = props.user;
-    console.log('card component ', id, name, email);
+    const navigate = useNavigate();
+
     return (
         <Col>
             <Card style={{ width: '18rem' }} key={id}>
@@ -12,7 +16,7 @@ const DataCard = (props) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{email}</Card.Text>
-                    <Button variant="primary">Detail</Button>
+                    <Button variant="primary" onClick={() =>navigate(`/user/${id}`)}>Detail</Button>
                 </Card.Body>
             </Card>
         </Col>

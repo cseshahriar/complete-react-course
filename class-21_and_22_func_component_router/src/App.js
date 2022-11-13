@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard/dashboard.component';
 import AppNavbar from './components/navbar/navbar.component';
 import Home from './components/home/home.component';
 import PageNotFound from './components/message/pagenotfound.component';
+import UserProfile from './components/userprofile.component';
 
 import './App.css';
 
@@ -15,9 +16,10 @@ const App = () => {
     <div className="App">
       <AppNavbar/>
       <Routes>
-        {/* component switcher */}
-        <Route path='/' element={<Home/>}/>
+        {/* path */}
+        <Route path='/home' element={<Home/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/user/:id' element={<UserProfile/>}/>
         <Route path='/*' element={<PageNotFound/>}/>
       </Routes>
     </div>
