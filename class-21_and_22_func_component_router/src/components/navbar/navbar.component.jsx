@@ -1,4 +1,5 @@
-import { Routes, Route,} from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -11,9 +12,15 @@ const AppNavbar = () => {
         <Container>
           <Navbar.Brand href="/">App Name</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-            <Nav.Link href="/404">Error</Nav.Link>
+            <Nav.Link href="/">
+              <Link to="/">Home</Link>
+            </Nav.Link>
+            <Nav.Link href="/dashboard">
+              <Link to="/dashboard">Dashboard</Link>
+            </Nav.Link>
+            <Nav.Link href="/404">
+            <Link to="/dfdfdf">Error</Link>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

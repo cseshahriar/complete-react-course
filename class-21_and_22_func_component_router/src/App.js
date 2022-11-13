@@ -9,15 +9,16 @@ import PageNotFound from './components/message/pagenotfound.component';
 import './App.css';
 
 // pure function
-const App = () => {
+const App = () => { 
   
   return (
     <div className="App">
       <AppNavbar/>
       <Routes>
+        {/* component switcher */}
         <Route path='/' element={<Home/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='*' element={<PageNotFound/>}/>
+        <Route path='/*' element={<PageNotFound/>}/>
       </Routes>
     </div>
   );
