@@ -9,6 +9,14 @@ const DataCard = (props) => {
     const {id, name, email} = props.user;
     const navigate = useNavigate();
 
+    const showDetails = () => {
+        navigate(
+            `/users/${id}`, {
+                state: {id, name, email}
+            }
+        )
+    }
+
     return (
         <Col>
             <Card style={{ width: '18rem' }} key={id}>
@@ -16,7 +24,7 @@ const DataCard = (props) => {
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>{email}</Card.Text>
-                    <Button variant="primary" onClick={() =>navigate(`/user/${id}`)}>Detail</Button>
+                    <Button variant="primary" onClick={showDetails}>Detail</Button>
                 </Card.Body>
             </Card>
         </Col>

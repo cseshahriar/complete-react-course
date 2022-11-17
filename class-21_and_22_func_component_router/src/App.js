@@ -18,8 +18,8 @@ const App = () => {
       <Routes>
         {/* path */}
         <Route path='/home' element={<Home/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/user/:id' element={<UserProfile/>}/>
+        <Route path='/users' element={<Dashboard/>}/>
+        <Route path='/users/:id' element={<UserProfile/>}/>
         <Route path='/*' element={<PageNotFound/>}/>
       </Routes>
     </div>
