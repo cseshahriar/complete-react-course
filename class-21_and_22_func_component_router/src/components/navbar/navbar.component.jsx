@@ -14,7 +14,8 @@ const AppNavbar = () => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to={'/home'}>Home</Nav.Link>
             <Nav.Link as={Link} to={'users'}>Users</Nav.Link>
-            <Nav.Link as={Link} to={"/404"}>Error</Nav.Link>
+            <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
+            <Nav.Link as={Link} to={"/signup"}>Sign Up</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

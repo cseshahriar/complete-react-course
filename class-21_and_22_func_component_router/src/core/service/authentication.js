@@ -1,3 +1,3 @@
-const authentication = () => true;
+const authentication = () => false;
 
 export default authentication;
