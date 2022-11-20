@@ -18,8 +18,8 @@ const DataCard = (props) => {
     }
 
     return (
-        <Col>
-            <Card style={{ width: '18rem' }} key={id}>
+        <Col key={id}>
+            <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="https://robohash.org/{id}"/>
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
