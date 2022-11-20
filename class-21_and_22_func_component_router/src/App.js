@@ -7,7 +7,7 @@ import Home from './components/home/home.component';
 import PageNotFound from './components/message/pagenotfound.component';
 import UserProfile from './components/userprofile.component';
 
-import PrivateRoute from './core/compoents/privateRoute.component';
+// import PrivateRoute from './core/compoents/privateRoute.component';
 import PrivateOutlet from './core/compoents/privateOutlet.component';
 
 import Login from './components/Auth/login.component';
@@ -24,21 +24,21 @@ const App = () => {
       <Routes>
         {/* path */}
         <Route path='/home' element={<Home/>}/>
-        <Route path='/users' element={<Dashboard/>}/>
         
         {/* private route */}
-        <Route path='/users/:id' element={
+        {/* <Route path='/users/:id' element={
           <PrivateRoute>
             <UserProfile/>
           </PrivateRoute>
-        }/>
+        }/> */}
 
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
 
         {/* group route */}
-        <Route path='users/*' element={PrivateOutlet}>
-          <Route path='detail/:id' element={<UserProfile/>}/>
+        <Route path='/*' element={PrivateOutlet}>
+          <Route path='users' element={<Dashboard/>}/>
+          <Route path='users/detail/:id' element={<UserProfile/>}/>
         </Route>
 
         {/* 404 page */}
