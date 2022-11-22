@@ -5,6 +5,11 @@ import {SearchBar, VideoDetail, VideoList}  from './components';
 import youtube from './api/youtube'; // export default youtube
 
 class App extends React.Component {
+    
+    handleSubmit = () => {
+
+    }
+
     render() {
         return(
             <Grid justify="center" container spacing={16}>
@@ -13,7 +18,7 @@ class App extends React.Component {
                     
                     {/* Search bar */}
                     <Grid item xs={12}>
-                        <SearchBar/>
+                        <SearchBar onFormSubmit={this.handleSubmit}/>
                     </Grid>
 
                     {/* Video Detail */}
