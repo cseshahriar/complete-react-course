@@ -5,7 +5,12 @@ import {SearchBar, VideoDetail, VideoList}  from './components';
 import youtube from './api/youtube'; // export default youtube
 
 class App extends React.Component {
-    
+
+    state = {
+        videos: [],
+        video: null
+    }
+
     handleSubmit = async(searchTerm) => {
         const response = await youtube.get(
             'search', 
@@ -18,10 +23,19 @@ class App extends React.Component {
                 } 
             }
         );
-        console.log(response);
+        console.log(response.data.items);
+        this.setState(
+            {
+                videos: response.data.items,
+                video: response.data.items[0]
+            }
+        );
     }
 
     render() {
+        
+        const {video, videos} = this.state;
+
         return(
             <Grid justify="center" container spacing={10}>
                 <Grid item xs={12}>
@@ -34,12 +48,12 @@ class App extends React.Component {
 
                     {/* Video Detail */}
                     <Grid item xs={8}>
-                        <VideoDetail/>
+                        <VideoDetail video={video} />
                     </Grid>
 
                     {/* Video list */}
                     <Grid item xs={4}>
-                        <VideoList/>
+                        <VideoList videos={videos}/>
                     </Grid>
                     
                 </Grid>
