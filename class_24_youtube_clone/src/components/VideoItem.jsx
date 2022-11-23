@@ -4,13 +4,16 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
-const VideoItem = ({video}) => {
-    if(!video) return <div>loading...</div>
-    const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
+const VideoItem = ({video, onVideoSelect}) => {
+    // if(!video) return <div>loading...</div>
+    // const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
 
     return(
         <Grid item xs={12}>
-            <Paper style={{display: 'flex', alignments: 'center'}}>
+            <Paper 
+                style={{display: 'flex', alignments: 'center', cursor: 'pointer'}} 
+                onClick={ () => onVideoSelect(video)}
+            >
                 <img style={{marginRight: '20px'}}
                     alt="thumbnail" 
                     src={video.snippet.thumbnails.medium.url}

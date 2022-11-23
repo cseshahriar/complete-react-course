@@ -6,8 +6,10 @@ import Grid from '@mui/material/Grid';
 
 import VideoItem   from './VideoItem';
 
-const VideoList = ({videos}) =>  {
-    const listOfVideos = videos.map((video, id) => <VideoItem video={video} key={id} />)
+const VideoList = ({videos, onVideoSelect}) =>  {
+    const listOfVideos = videos.map(
+        (video, id) => <VideoItem video={video} key={id} onVideoSelect={onVideoSelect} />
+    )
     return (
         <Grid container spacing={10}>
             {listOfVideos}

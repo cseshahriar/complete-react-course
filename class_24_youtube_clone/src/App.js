@@ -10,7 +10,8 @@ class App extends React.Component {
         videos: [],
         video: null
     }
-
+    
+    // search form submit
     handleSubmit = async(searchTerm) => {
         const response = await youtube.get(
             'search', 
@@ -30,6 +31,11 @@ class App extends React.Component {
                 video: response.data.items[0]
             }
         );
+    }
+
+    // onVideoSelect
+    onVideoSelect = (video) => {
+        this.setState({video: video});
     }
 
     render() {
@@ -53,7 +59,7 @@ class App extends React.Component {
 
                     {/* Video list */}
                     <Grid item xs={4}>
-                        <VideoList videos={videos}/>
+                        <VideoList videos={videos} onVideoSelect={this.onVideoSelect}/>
                     </Grid>
                     
                 </Grid>
