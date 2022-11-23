@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from '@mui/material/Grid';
 
-import {SearchBar, VideoDetail, VideoList}  from './components';
+import {SearchBar, VideoDetail, VideoList }  from './components';
 import youtube from './api/youtube'; // export default youtube
 
 class App extends React.Component {
