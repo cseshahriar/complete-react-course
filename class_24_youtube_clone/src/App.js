@@ -11,6 +11,10 @@ class App extends React.Component {
         video: null
     }
     
+    componentDidMount() {
+        this.handleSubmit('javascript');
+    }
+
     // search form submit
     handleSubmit = async(searchTerm) => {
         const response = await youtube.get(
