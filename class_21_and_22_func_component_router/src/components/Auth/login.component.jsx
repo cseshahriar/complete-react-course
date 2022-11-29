@@ -1,28 +1,27 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-
 
 const Login = () => {
+    const [clickCount, setClickCount] = useState(0);
+    
     const navigate = useNavigate();
 
     const toSignup = () => {
         navigate('/signup');
     }
 
-    // if authenticated
-    const athenticateUser = () => {
-        navigate('/users');
+    const authenticateUser = (event) => {
+        event.preventDefault();
+        console.log('authenticateUser')
+        setClickCount(clickCount + 1);
     }
 
-    return (
+    return(
         <div>
-        <Container>
-            <Row>
-                <Col>
-                    <h1>Login</h1>
+        {
+            clickCount >= 3 ? <h1>Too many wrong attempt</h1> : <div>
+                <h1>Login</h1>
                     <form>
                         <div className="form-group">
                             <label>Username</label>
@@ -35,17 +34,14 @@ const Login = () => {
                         </div>
 
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary mt-3">Login</button>
+                            <button type="submit" className="btn btn-primary mt-3" onClick={authenticateUser}>Login</button>
                         </div>
                     </form>
-
                     <p>
-                        You did not account, please signup <Button className="btn btn-sm" onClick={toSignup}> Sign up</Button>
+                        You did not account, please signup <a href="#" onClick={toSignup}> Sign up</a>
                     </p>
-
-                </Col>
-            </Row>
-        </Container>
+            </div>
+        }
         </div>
     )
 }
