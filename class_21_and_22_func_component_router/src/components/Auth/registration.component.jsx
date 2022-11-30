@@ -4,10 +4,10 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
+import ClickHoc from '../../core/compoents/click-hoc.component';
 
 const Signup = () => {
     const navigate = useNavigate();
-
     const toLogin = () => {
         navigate('/login');
     }
@@ -44,4 +44,5 @@ const Signup = () => {
     )
 }
 
-export default Signup;
+
+export default ClickHoc(Signup);

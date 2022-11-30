@@ -1,20 +1,16 @@
-import { useState } from "react";
+// third party libraries
 import { useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 
-const Login = () => {
-    const [clickCount, setClickCount] = useState(0);
-    
+// apps import
+import ClickHoc from '../../core/compoents/click-hoc.component';
+
+
+const Login = ({clickCount, onClicked}) => { 
     const navigate = useNavigate();
 
     const toSignup = () => {
+        // return signup component
         navigate('/signup');
-    }
-
-    const authenticateUser = (event) => {
-        event.preventDefault();
-        console.log('authenticateUser')
-        setClickCount(clickCount + 1);
     }
 
     return(
@@ -34,11 +30,11 @@ const Login = () => {
                         </div>
 
                         <div className="form-group">
-                            <button type="submit" className="btn btn-primary mt-3" onClick={authenticateUser}>Login</button>
+                            <button type="submit" className="btn btn-primary mt-3" onClick={onClicked}>Login</button>
                         </div>
                     </form>
                     <p>
-                        You did not account, please signup <a href="#" onClick={toSignup}> Sign up</a>
+                        You did not account, please signup <button onClick={toSignup}> Sign up</button>
                     </p>
             </div>
         }
@@ -46,4 +42,6 @@ const Login = () => {
     )
 }
 
-export default Login;
+// const NewLogin = ClickHoc(Login);
+
+export default ClickHoc(Login);
