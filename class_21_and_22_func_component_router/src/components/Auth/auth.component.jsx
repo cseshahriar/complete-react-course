@@ -10,16 +10,13 @@ import Registration from './registration.component';
 const AuthComponent = () => {
     const navigate = useNavigate();
 
-    const toSignup = () => {
-        // navigate('/signup');
-    }
-
     return (  
         <div>
         <Container>
             <Row>
                 <Col>
                     <Login/>
+                    <Registration/>
                 </Col>
             </Row>
         </Container>

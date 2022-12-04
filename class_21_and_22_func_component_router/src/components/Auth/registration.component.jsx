@@ -5,8 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 import ClickHoc from '../../core/compoents/click-hoc.component';
+import Form from '../Auth/form.component';
 
-const Signup = () => {
+const Signup = ({clickCount, onClicked}) => {
     const navigate = useNavigate();
     const toLogin = () => {
         navigate('/login');
@@ -18,24 +19,10 @@ const Signup = () => {
                 <Row>
                     <Col>
                         <h1>Signup</h1>
-                        <form>
-                            <div className="form-group">
-                                <label>Username</label>
-                                <input type="text" className="form-control" name="username"/>
-                            </div>
-
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input type="password" className="form-control" name="password"/>
-                            </div>
-
-                            <div className="form-group">
-                                <button type="submit" className="btn btn-primary mt-3">Signup</button>
-                            </div>
-                        </form>
-
+                        <Form/>
+                        <Button variant="primary" onClick={onClicked} className="mt-2">Signup</Button>
                         <p>
-                            If already have an account, please login <Button className="btn btn-sm" onClick={toLogin}> Login</Button>
+                            If already have an account, please login <Button className="btn btn-sm" onClick={toLogin}>Login</Button>
                         </p>
                     </Col>
                 </Row>

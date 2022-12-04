@@ -11,6 +11,7 @@ import UserProfile from './components/userprofile.component';
 import PrivateOutlet from './core/compoents/privateOutlet.component';
 
 import AuthComponent from './components/Auth/auth.component';
+import Login from './components/Auth/login.component';
 import Signup from './components/Auth/registration.component';
 
 import './App.css';
@@ -32,7 +33,7 @@ const App = () => {
           </PrivateRoute>
         }/> */}
 
-        <Route path='/login' element={<AuthComponent/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
 
         {/* group route */}
