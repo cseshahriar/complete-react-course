@@ -11,13 +11,20 @@ function App() {
             ki render korbe seta bola thake, pass any function,
             render props define what will be render
           */}
-          <Counter
-              render={(count, incrementCount) => <ClickCounter count={count} incrementCount={incrementCount}/>}
-          />
+          <Counter>
+              {/* render props */}
+              {(count, incrementCount) => (
+                  <ClickCounter count={count} incrementCount={incrementCount}/>
+              )}
+          </Counter>
 
-          <HoverCounter
-              render={(count, incrementCount) => <ClickCounter count={count} incrementCount={incrementCount}/>}
-          />
+          <Counter>
+              {/* render props */}
+              {(count, incrementCount) => (
+                  <HoverCounter count={count} incrementCount={incrementCount}/>
+              )}
+          </Counter>
+
       </div>
   );
 }
