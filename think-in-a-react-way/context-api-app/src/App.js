@@ -1,13 +1,16 @@
 import {Component} from "react";
+import ClickCounter from "./components/ClickCounter";
+import Counter from "./components/Counter";
 import Section from "./components/Section";
+import themeContext from "./contexts/themeContext";
 import './App.css';
+
+import createContext from "./lib/Context";
+
 
 export default class App extends Component {
     state = {
         theme: 'dark'
-    }
-    incrementCount() {
-
     }
 
     render() {
@@ -15,7 +18,9 @@ export default class App extends Component {
 
         return (
             <div className="App">
-                <Section theme={theme} />
+                <themeContext.Provider value={{ theme }}>
+                    <Section/>
+                </themeContext.Provider>
             </div>
         );
     }
