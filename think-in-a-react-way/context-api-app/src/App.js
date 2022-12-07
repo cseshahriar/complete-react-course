@@ -13,12 +13,26 @@ export default class App extends Component {
         theme: 'dark'
     }
 
+    switchTheme = () => {
+        this.setState(({theme}) => {
+            if(theme === 'dark') {
+                return {
+                    theme: 'light'
+                }
+            } else {
+                return {
+                    theme: 'dark'
+                }
+            }
+        })
+    }
+
     render() {
         const {theme} = this.state;
 
         return (
             <div className="App">
-                <themeContext.Provider value={{ theme }}>
+                <themeContext.Provider value={{ theme:theme, switchTheme: this.switchTheme }}>
                     <Section/>
                 </themeContext.Provider>
             </div>

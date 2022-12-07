@@ -1,7 +1,7 @@
 import createContext from "../lib/Context";
 
 const ThemeContext = createContext({
-    theme: 'light'
+    theme: 'dark'
 });
 
 export default ThemeContext;
