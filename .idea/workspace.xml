@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="39526a8d-5be2-420e-97e4-484b268597ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/render-props-pattern/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/think-in-a-react-way/render-props-pattern/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/render-props-pattern/src/components/Counter.js" beforeDir="false" afterPath="$PROJECT_DIR$/think-in-a-react-way/render-props-pattern/src/components/Counter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/render-props-pattern/src/components/User.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +60,8 @@
       <workItem from="1670220674371" duration="175000" />
       <workItem from="1670221116021" duration="7425000" />
       <workItem from="1670301139076" duration="1305000" />
+      <workItem from="1670333532776" duration="7848000" />
+      <workItem from="1670505309202" duration="95000" />
     </task>
     <servers />
   </component>
