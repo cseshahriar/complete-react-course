@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="39526a8d-5be2-420e-97e4-484b268597ea" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/components/Content.js" beforeDir="false" afterPath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/components/Content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/components/HoverCounter.js" beforeDir="false" afterPath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/components/HoverCounter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/think-in-a-react-way/context-api-app/src/components/Section.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +59,8 @@
       <workItem from="1670220674371" duration="175000" />
       <workItem from="1670221116021" duration="7425000" />
       <workItem from="1670301139076" duration="7744000" />
-      <workItem from="1670402909227" duration="7243000" />
+      <workItem from="1670402909227" duration="7392000" />
+      <workItem from="1670479238359" duration="28000" />
     </task>
     <servers />
   </component>
