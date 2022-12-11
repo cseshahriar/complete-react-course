@@ -9,8 +9,8 @@ const Register = () => {
 
     const incrementCount = useCallback(() => {
         console.log('incrementCount register count', clickCount);
-        setClickedCount((prev) => prev + 1);
-    }, []);
+        setClickedCount(clickCount + 1);
+    }, [clickCount]);
 
     const googleIncrementCount = useCallback(() => {
         console.log('googleIncrementCount register count', googleClickCount);
