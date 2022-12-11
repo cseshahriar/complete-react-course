@@ -6,4 +6,6 @@ const TitleComponent = ({title}) => {
     );
 }
 
-export default TitleComponent;
+export default React.memo(TitleComponent);
+// memo is cache, it's not re-render title component
+// hoc for functional component

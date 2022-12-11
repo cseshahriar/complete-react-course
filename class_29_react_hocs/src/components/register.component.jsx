@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+
 import TitleComponent from "./title.component";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +21,7 @@ const Register = () => {
             {
                 clickCount > 3 ? <p>Too many attempt</p>: <button className="btn btn-primary" onClick={incrementCount}>Register</button>
             }
-
+            <h4 className="mt-3">Click Count {clickCount}</h4>
         </div>
     )
 }
