@@ -1,28 +1,53 @@
-import React, {useState} from "react";
-
+import {useState, useCallback} from "react";
+import ButtonComponent from "./button.component";
 import TitleComponent from "./title.component";
-import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-    const navigate = useNavigate();
 
     const [clickCount, setClickedCount] = useState(0);
+    const [googleClickCount, setGoogleClickedCount] = useState(0);
 
-    const incrementCount = () => {
-        setClickedCount(clickCount + 1);
-        if(clickCount < 3) {
-            navigate("/register");
-        }
-        console.log('register count', clickCount);
-    }
+    const incrementCount = useCallback(() => {
+        console.log('incrementCount register count', clickCount);
+        setClickedCount((prev) => prev + 1);
+    }, []);
+
+    const googleIncrementCount = useCallback(() => {
+        console.log('googleIncrementCount register count', googleClickCount);
+        setGoogleClickedCount((prev) => prev + 1);
+    }, []);
+
     return(
         <div>
             <TitleComponent title="Register"/>
             {
-                clickCount > 3 ? <p>Too many attempt</p>: <button className="btn btn-primary" onClick={incrementCount}>Register</button>
+                clickCount || googleClickCount > 3 ? <p>Too many attempt</p> : ''
             }
-            <h4 className="mt-3">Click Count {clickCount}</h4>
+
+            {
+                /*
+                    co relation ?
+                    one button component click both load problem
+                */
+            }
+            <div>
+                <ButtonComponent
+                    buttonCount={clickCount}
+                    buttonName={"Facebook"}
+                    handleBtnClick={incrementCount}
+                />
+
+                <ButtonComponent
+                    buttonCount={googleClickCount}
+                    buttonName={"Google"}
+                    handleBtnClick={googleIncrementCount}
+                />
+            </div>
         </div>
+
     )
 }
 export  default  Register;
+
+// state change component re-render
+// useCallback not working
