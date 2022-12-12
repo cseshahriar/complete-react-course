@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import {forwardRef, useRef, useEffect} from "react";
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+            <Host/>
       </header>
     </div>
   );
 }
 
-export default App;
+function Host() {
+    const inpRef = useRef(null);
+
+    useEffect(() => {
+        inpRef.current.focus();
+    }, []);
+
+    return (
+        <MyInput type="text" ref={inpRef}>Hello World</MyInput>
+    );
+};
+
+const MyInput = forwardRef((props, ref) => {
+    return(
+        <>
+            <input ref={ref} />
+            {props.children}
+        </>
+    );
+});
+
+// useRef use for next/prev form
+// previous form data keep

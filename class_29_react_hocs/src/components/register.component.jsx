@@ -10,11 +10,11 @@ const Register = () => {
     const incrementCount = useCallback(() => {
         console.log('incrementCount register count', clickCount);
         setClickedCount(clickCount + 1);
-    }, [clickCount]);
+    }, [clickCount]); // manually handle dependency
 
     const googleIncrementCount = useCallback(() => {
         console.log('googleIncrementCount register count', googleClickCount);
-        setGoogleClickedCount((prev) => prev + 1);
+        setGoogleClickedCount((prev) => prev + 1); // dependence handle by react
     }, []);
 
     return(
