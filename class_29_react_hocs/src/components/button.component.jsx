@@ -11,4 +11,4 @@ const ButtonComponent = ({handleBtnClick, buttonCount, buttonName}) => {
     )
 }
 
-export default  ButtonComponent;
+export default React.memo(ButtonComponent);
