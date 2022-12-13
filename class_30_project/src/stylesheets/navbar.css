@@ -1,0 +1,5 @@
+nav {
+    clear: bottom;
+    overflow: hidden;
+    z-index: 999999;
+}
