@@ -1,3 +1,4 @@
+import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -5,10 +6,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+// font awesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCartPlus} from "@fortawesome/free-solid-svg-icons";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {faCogs} from "@fortawesome/free-solid-svg-icons";
+
+import '../stylesheets/navbar.css';
 
 function NavBarComponent() {
     return (
@@ -45,4 +48,4 @@ function NavBarComponent() {
     );
 }
 
-export default NavBarComponent;
+export default React.memo(NavBarComponent);
