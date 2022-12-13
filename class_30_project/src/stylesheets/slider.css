@@ -1,0 +1,10 @@
+.slider {
+    margin-top: 0px;
+}
+.card-img-top {
+    margin-top: 15px;
+    width: 40%;
+    height: 250px;
+    object-fit: cover;
+    vertical-align: middle;
+}
