@@ -1,4 +1,5 @@
-import {useState, useCallback} from "react";
+import React, {useState, useCallback} from "react";
+
 import ButtonComponent from "./button.component";
 import TitleComponent from "./title.component";
 
@@ -9,27 +10,17 @@ const Register = () => {
 
     const incrementCount = useCallback(() => {
         console.log('incrementCount register count', clickCount);
-        setClickedCount(clickCount + 1);
-    }, [clickCount]);
+        setClickedCount((clickCount) => clickCount + 1);
+    },[]);
 
     const googleIncrementCount = useCallback(() => {
         console.log('googleIncrementCount register count', googleClickCount);
-        setGoogleClickedCount((prev) => prev + 1);
-    }, []);
+        setGoogleClickedCount((googleClickCount) => googleClickCount + 1);
+    },[]);
 
     return(
         <div>
             <TitleComponent title="Register"/>
-            {
-                clickCount || googleClickCount > 3 ? <p>Too many attempt</p> : ''
-            }
-
-            {
-                /*
-                    co relation ?
-                    one button component click both load problem
-                */
-            }
             <div>
                 <ButtonComponent
                     buttonCount={clickCount}
