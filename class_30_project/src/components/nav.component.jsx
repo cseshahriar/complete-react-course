@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom'
+import {Cookies} from "react-cookie";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -18,6 +19,7 @@ import {faSignOut} from "@fortawesome/free-solid-svg-icons";
 import '../stylesheets/navbar.css';
 
 function NavBarComponent() {
+    const cookies = new Cookies();
     const navigate = useNavigate();
 
     return (
@@ -38,19 +40,22 @@ function NavBarComponent() {
                     </Form>
 
                     <Nav className="m-auto">
-                        <Nav.Link href="/cart"><FontAwesomeIcon icon={faCartPlus} /> Cart</Nav.Link>
-                        <Nav.Link href="/dashboard"><FontAwesomeIcon icon={faCogs} />  Admin User</Nav.Link>
-
-                        <NavDropdown title="Username" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
-                        </NavDropdown>
-
-                        <Nav.Link href="/register"><FontAwesomeIcon icon={faSignIn} /> Register</Nav.Link>
-                        <Nav.Link href="/login"><FontAwesomeIcon icon={faSignOut} /> Login</Nav.Link>
-
+                        {
+                            cookies.get('token') ?
+                                <>
+                                    <Nav.Link href="/cart"><FontAwesomeIcon icon={faCartPlus} /> Cart</Nav.Link>
+                                    <Nav.Link href="/dashboard"><FontAwesomeIcon icon={faCogs} />  Admin User</Nav.Link>
+                                    <NavDropdown title="Username" id="collasible-nav-dropdown">
+                                        <NavDropdown.Item href="/orders">Orders</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
+                                    </NavDropdown>
+                                    <Nav.Link href="/register"><FontAwesomeIcon icon={faSignIn} /> Register</Nav.Link>
+                                </>
+                                :
+                                <Nav.Link href="/login"><FontAwesomeIcon icon={faSignOut} /> Login</Nav.Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
