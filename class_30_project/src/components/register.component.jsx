@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react";
-import {useCookies} from 'react-cookie';
+import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom'
 
 import Card from 'react-bootstrap/Card';
@@ -9,22 +8,15 @@ import FooterComponent from "./footer.component";
 
 import APIService from "../APIService";
 
-function LoginComponent() {
+function RegisterComponent() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [token, setToken] = useCookies(['token']);
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if(token['token']) {
-            navigate('/')
-        }
-    }, [token]) // one time
-
-    const loginAction = () => {
-        APIService.LoginUser({username, password})
-            .then(response => setToken('token', response.token))
+    const registrationAction = () => {
+        APIService.RegisterUser({username, password})
+            .then(response => navigate('/login'))
             .catch(error => console.log(error));
     }
 
@@ -38,7 +30,7 @@ function LoginComponent() {
                     <div className="col-6 offset-3">
                         <Card>
                             <Card.Body>
-                                <h3 className="mt-3 mb-3 text-center">SIGN IN</h3>
+                                <h3 className="mt-3 mb-3 text-center">SIGN UP</h3>
 
                                 <div className="mb-3">
                                     <label htmlFor="username" className="form-label">Username</label>
@@ -57,10 +49,9 @@ function LoginComponent() {
                                 </div>
 
                                 <div className="mb-3 mt-3 text-center">
-                                    <button onClick={loginAction} className="btn btn-primary">SIGN IN</button>
-                                    <small style={{display:'block', marginLeft: '15px', marginTop: '15px'}}>If You Don't Have An Account, Please <a onClick={() => navigate('/register') } style={{textDecoration: 'none'}}>Register</a> Here</small>
+                                    <button onClick={registrationAction} className="btn btn-primary">SIGN UP</button>
+                                    <small style={{display:'block', marginLeft: '15px', marginTop: '15px'}}>If You Have An Account, Please <a onClick={() => navigate('/login') }  style={{textDecoration: 'none'}}>Login</a> Here</small>
                                 </div>
-
                             </Card.Body>
                         </Card>
                     </div>
@@ -70,4 +61,4 @@ function LoginComponent() {
     )
 }
 
-export default LoginComponent;
+export default RegisterComponent;

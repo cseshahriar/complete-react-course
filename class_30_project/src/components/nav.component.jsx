@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -17,10 +18,12 @@ import {faSignOut} from "@fortawesome/free-solid-svg-icons";
 import '../stylesheets/navbar.css';
 
 function NavBarComponent() {
+    const navigate = useNavigate();
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">React E-Commerce</Navbar.Brand>
+                <Navbar.Brand onClick={() => navigate('/')} style={{cursor: 'pointer'}}>React E-Commerce</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -45,7 +48,7 @@ function NavBarComponent() {
                             <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
                         </NavDropdown>
 
-                        <Nav.Link href="/login"><FontAwesomeIcon icon={faSignIn} /> Register</Nav.Link>
+                        <Nav.Link href="/register"><FontAwesomeIcon icon={faSignIn} /> Register</Nav.Link>
                         <Nav.Link href="/login"><FontAwesomeIcon icon={faSignOut} /> Login</Nav.Link>
 
                     </Nav>
