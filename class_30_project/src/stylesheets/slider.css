@@ -1,7 +1,7 @@
 .slider {
     margin-top: 0px;
 }
-.card-img-top {
+.slider .card-img-top {
     margin-top: 15px;
     width: 40%;
     height: 250px;

@@ -1,13 +1,22 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import '../stylesheets/product-card.css';
+import { useNavigate } from "react-router-dom";
 
 const ProductCardComponent = (props) => {
-    const {imgSrc, price, title, rating, reviewCount} = props.data;
+    const {id, imgSrc, price, title, rating, reviewCount} = props.data;
+    const {onClick} = props;
     const totalStar = [1, 2, 3, 4, 5];
 
+    const navigate = useNavigate();
+
+    const showDetails = () => {
+        console.log(id);
+        navigate(`/products/details/${id}`);
+    }
+
     return (
-        <Card className="p-0 overflow-hidden h-100 shadow  bg-light">
+        <Card className="p-0 overflow-hidden h-100 shadow  bg-light" onClick={showDetails}>
             <div className="overflow-hidden rounded p-0">
                 <Card.Img variant="top" src={imgSrc} />
             </div>

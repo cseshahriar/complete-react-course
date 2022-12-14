@@ -1,6 +1,8 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 
+import '../stylesheets/slider.css';
+
 const SliderCardComponent = (props) => {
     const {imgSrc, price, title} = props.data;
 
