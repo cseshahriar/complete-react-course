@@ -57,8 +57,7 @@ function NavBarComponent() {
                                         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
                                     </NavDropdown>
-                                    <Nav.Link href="/logout" onClick={logout}><FontAwesomeIcon icon={faSignOut} /> Logout</Nav.Link>
-
+                                    <a className="nav-link" onClick={logout} style={{cursor: 'pointer'}}><FontAwesomeIcon icon={faSignOut} /> Logout</a>
                                 </>
                                 :
                                 <>
