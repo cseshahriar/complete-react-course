@@ -16,7 +16,7 @@ const ProductCardComponent = (props) => {
     }
 
     return (
-        <Card className="p-0 overflow-hidden h-100 shadow  bg-light" onClick={showDetails}>
+        <Card className="p-0 overflow-hidden h-100 shadow  bg-light product" onClick={showDetails} >
             <div className="overflow-hidden rounded p-0">
                 <Card.Img variant="top" src={imgSrc} />
             </div>
