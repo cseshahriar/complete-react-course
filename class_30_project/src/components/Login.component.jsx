@@ -41,9 +41,9 @@ function LoginComponent() {
                                 <h3 className="mt-3 mb-3 text-center">SIGN IN</h3>
 
                                 <div className="mb-3">
-                                    <label htmlFor="username" className="form-label">Username</label>
+                                    <label htmlFor="username" className="form-label">Email</label>
                                     <input
-                                        type="text" className="form-control" id="username" placeholder="Please Enter Username"
+                                        type="email" className="form-control" id="username" placeholder="Please Enter Email"
                                         value={username} onChange={e => setUsername(e.target.value)}
                                     />
                                 </div>

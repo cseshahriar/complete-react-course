@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom'
-import {Cookies} from "react-cookie";
+import {Cookies, withCookies} from "react-cookie";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -15,12 +15,18 @@ import {faCartPlus} from "@fortawesome/free-solid-svg-icons";
 import {faCogs} from "@fortawesome/free-solid-svg-icons";
 import {faSignIn} from "@fortawesome/free-solid-svg-icons";
 import {faSignOut} from "@fortawesome/free-solid-svg-icons";
+import {faUser} from "@fortawesome/free-solid-svg-icons";
 
 import '../stylesheets/navbar.css';
 
 function NavBarComponent() {
     const cookies = new Cookies();
     const navigate = useNavigate();
+
+    const logout = (e) => {
+        cookies.remove('token');
+        navigate('/');
+    }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -51,10 +57,14 @@ function NavBarComponent() {
                                         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                                         <NavDropdown.Item href="#action/3.4">Settings</NavDropdown.Item>
                                     </NavDropdown>
-                                    <Nav.Link href="/register"><FontAwesomeIcon icon={faSignIn} /> Register</Nav.Link>
+                                    <Nav.Link href="/logout" onClick={logout}><FontAwesomeIcon icon={faSignOut} /> Logout</Nav.Link>
+
                                 </>
                                 :
-                                <Nav.Link href="/login"><FontAwesomeIcon icon={faSignOut} /> Login</Nav.Link>
+                                <>
+                                    <Nav.Link href="/login"><FontAwesomeIcon icon={faSignOut} /> Login</Nav.Link>
+                                    <Nav.Link href="/register"><FontAwesomeIcon icon={faUser} /> Register</Nav.Link>
+                                </>
                         }
                     </Nav>
                 </Navbar.Collapse>
