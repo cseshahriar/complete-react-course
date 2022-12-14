@@ -19,7 +19,7 @@ import  img3 from  '../img/product1.jpeg';
 
 function SliderComponent() {
     return (
-        <div className="slider container py-5 px-4 justify-content-center mb-5">
+        <div className="slider container py-5 px-4 justify-content-center">
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
