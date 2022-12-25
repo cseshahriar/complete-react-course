@@ -1,5 +1,9 @@
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {actions} from './store/index';
+
 import './App.css';
+
 
 function App() {
   // receive value from store
@@ -9,15 +13,15 @@ function App() {
 
 
   const increment = () => {
-    dispatch({type: 'INCREMENT'});
+    dispatch(actions.increment());
   }
 
   const decrement = () => { 
-    dispatch({type: 'DECREMENT'});
+    dispatch(actions.decrement());
   }
 
   const addValue = () => {
-    dispatch({type: 'ADDVALUE', payload: 10});
+    dispatch(actions.addValue(10));
   }
 
   return (
