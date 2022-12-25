@@ -1,0 +1,13 @@
+Redux ?
+    A complete State Management Tool, with a single store as CDS
+
+Reducers ?
+    Manage the state and Return the newly updated state.
+
+Actions ?
+    Actions have 2 properties type: which is a unique identifier and payload 
+    which has data
+
+Dispatch ?
+    Dispatch is used to send actions to update the data.
+
