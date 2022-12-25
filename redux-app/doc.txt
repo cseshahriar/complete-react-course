@@ -11,3 +11,5 @@ Actions ?
 Dispatch ?
     Dispatch is used to send actions to update the data.
 
+# install libs
+npm install redux react-redux
