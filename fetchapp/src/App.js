@@ -1,8 +1,8 @@
 import './App.css';
-import Quote from './components/fetch/Quote';
+import Quote from './components/axiosfetch/Quote'
 
 function App() {
-  return (
+    return (
     <div className="App">
         <Quote />
     </div>
