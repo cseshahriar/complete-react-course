@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, {useState } from "react";
 import { useQuery } from 'react-query';
 
 // bootstrap
@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/Table';
 import Spinner from 'react-bootstrap/Spinner';
 
 import './App.css';
+import Post from "./components/Post";
 
 const fetcher = (url) => {
     return fetch(url)
@@ -13,7 +14,9 @@ const fetcher = (url) => {
 }
 
 function App() {
-    const [repoName, setReponame ] = useState('');
+    // state
+    const [postID, setPostID ] = useState(null);
+
     const {isLoading, data } = useQuery(
           'posts',
         () => fetcher("https://jsonplaceholder.typicode.com/posts")
@@ -29,6 +32,10 @@ function App() {
                 </div>
             </div>
         );
+    }
+
+    if(postID !== null) {
+        return <Post postID={postID} goBack={() => setPostID(null)} />
     }
 
     return (
@@ -53,7 +60,7 @@ function App() {
                                             <td>{post.id}</td>
                                             <td>{post.title}</td>
                                             <td>
-                                                <a className="btn btn-sm btn-primary" href={`/post/${post.id}`}>View</a>
+                                                <a className="btn btn-sm btn-primary" href="#" onClick={() => setPostID(post.id)}>View</a>
                                             </td>
                                         </tr>
                                     ))
