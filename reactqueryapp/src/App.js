@@ -7,6 +7,7 @@ import Spinner from 'react-bootstrap/Spinner';
 
 import './App.css';
 import Post from "./components/Post";
+import client from "./react-query-client";
 
 const fetcher = (url) => {
     return fetch(url)
@@ -55,15 +56,24 @@ function App() {
 
                             <tbody>
                                 {
-                                    data &&  data.map(post => (
-                                        <tr key={post.id}>
-                                            <td>{post.id}</td>
-                                            <td>{post.title}</td>
-                                            <td>
-                                                <a className="btn btn-sm btn-primary" href="#" onClick={() => setPostID(post.id)}>View</a>
-                                            </td>
-                                        </tr>
-                                    ))
+                                    data.map(post => {
+                                        const cachedPost = client.getQueryData(['post', post.id])
+
+                                        return (
+                                            <tr key={post.id}>
+                                                <td>{post.id}</td>
+                                                <td>{post.title}</td>
+                                                <td>
+                                                    {
+                                                        cachedPost
+                                                            ? '(visited)'
+                                                            : <a className="btn btn-sm btn-primary" href="#"
+                                                               onClick={() => setPostID(post.id)}>View</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
                                 }
                             </tbody>
                         </Table>
