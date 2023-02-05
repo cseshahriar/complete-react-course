@@ -1,87 +1,52 @@
-import React, {useState } from "react";
-import { useQuery } from 'react-query';
-
-// bootstrap
-import Table from 'react-bootstrap/Table';
-import Spinner from 'react-bootstrap/Spinner';
-
+import React from "react";
 import './App.css';
-import Post from "./components/Post";
-import client from "./react-query-client";
 
-const fetcher = (url) => {
-    return fetch(url)
-            .then(response => response.json())
-}
+import SpinnerComponent from "./components/Spinner";
+import MessageComponent from "./components/Message";
+
+import {useQuery} from "react-query";
+
+const POSTS = [
+    {id: 1, title: 'Post 1'},
+    {id: 2, title: 'Post 2'},
+]
+
 
 function App() {
-    // state
-    const [postID, setPostID ] = useState(null);
 
-    const {isLoading, data } = useQuery(
-          'posts',
-        () => fetcher("https://jsonplaceholder.typicode.com/posts")
-      )
+    const postsQuery = useQuery({
+        queryKey: ['posts'],
+        queryFn: () => wait(1000).then(() => [...POSTS])
+        // queryFn: () => Promise.reject("Error message")
+    });
 
-    if(isLoading) {
-        return (
-            <div className="App">
-                <div className="container py-5">
-                    <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                </div>
-            </div>
-        );
+    // is is loading
+    if(postsQuery.isLoading) {
+        return <SpinnerComponent/>
     }
 
-    if(postID !== null) {
-        return <Post postID={postID} goBack={() => setPostID(null)} />
+    if(postsQuery.isError) {
+        return <MessageComponent
+            variant="danger"
+            message={JSON.stringify(postsQuery.error)}
+        />
     }
+
 
     return (
         <div className="App">
-            <div className="container py-5">
-                <div className="row">
-                    <div className="col">
-                        <h1>Posts</h1>
-                        <Table striped bordered hover size="sm">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Title</th>
-                                <th>Actions</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                                {
-                                    data.map(post => {
-                                        const cachedPost = client.getQueryData(['post', post.id])
-
-                                        return (
-                                            <tr key={post.id}>
-                                                <td>{post.id}</td>
-                                                <td>{post.title}</td>
-                                                <td>
-                                                    {
-                                                        cachedPost
-                                                            ? '(visited)'
-                                                            : <a className="btn btn-sm btn-primary" href="#"
-                                                               onClick={() => setPostID(post.id)}>View</a>
-                                                    }
-                                                </td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </tbody>
-                        </Table>
-                    </div>
-                </div>
-            </div>
+            <h1>Posts</h1>
+            {
+                postsQuery.data.map(post =>
+                    <div key={post.id}>{ post.title }</div>
+                )
+            }
         </div>
     );
+}
+
+function wait(duration) {
+    return new Promise(resolve => setTimeout(resolve, duration))
 }
 
 export default App;
