@@ -12,6 +12,7 @@ import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 // npm i axios react-router-dom
 // https://gorest.co.in/
 // access token 7ec656aef69513df85dbf4ad4b4fa1eed923c8d83421266bf18383b3b9433362
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import Home from "./Components/Home";
 const App = () => {
@@ -23,8 +24,10 @@ const App = () => {
                 <BrowserRouter>
                     <Routes>
                         <Route path='/' element={<Home />}/>
+                        <Route path='/:id' element={<Home />}/>
                     </Routes>
                 </BrowserRouter>
+                <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
         </ChakraProvider>
     )
