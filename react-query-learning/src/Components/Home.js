@@ -53,6 +53,7 @@ const Home = () => {
                                         }}
                                         disabled={!data.meta.pagination.links.previous !== null}
                                     > Prev</Button>
+                                    <Text>Current Page { pageId }</Text>
                                     <Button
                                         colorScheme="green"
                                         onClick = {() => {
