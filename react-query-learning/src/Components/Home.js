@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { useQuery } from 'react-query'
 import {Button, Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast} from "@chakra-ui/react";
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams, useNavigate, Link} from "react-router-dom";
 
 const fetchPosts = async (id) => {
     try {
@@ -63,14 +63,17 @@ const Home = () => {
                                 </Flex>
                                 {
                                     data.data.map((post) => (
-                                        <Stack key={post.id} mb="4" mt="2" p="4" boxShadow="md" borderRadius="x1" border="1px solid #ccc">
-                                            <Flex justify="space-between">
-                                                <Text>User Id: { post.user_id }</Text>
-                                                <Text>Post Id Id: { post.id } </Text>
-                                            </Flex>
-                                            <Heading>{ post.title }</Heading>
-                                            <Text>{ post.body }</Text>
-                                        </Stack>
+                                        <Link to={`/post/${post.id}`} key={post.id}>
+                                            <Stack mb="4" mt="2" p="4" boxShadow="md" borderRadius="x1" border="1px solid #ccc">
+                                                <Flex justify="space-between">
+                                                    <Text>User Id: { post.user_id }</Text>
+                                                    <Text>Post Id: { post.id } </Text>
+                                                </Flex>
+                                                <Heading>{ post.title }</Heading>
+                                                <Text>{ post.body }</Text>
+                                            </Stack>
+                                        </Link>
+
                                     ))
                                 }
                             </>

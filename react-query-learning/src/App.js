@@ -15,6 +15,8 @@ import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import { ReactQueryDevtools } from 'react-query/devtools'
 
 import Home from "./Components/Home";
+import Post from "./Components/Post";
+
 const App = () => {
 
     const queryClient = new QueryClient()
@@ -23,8 +25,9 @@ const App = () => {
             <QueryClientProvider client={queryClient}>
                 <BrowserRouter>
                     <Routes>
-                        <Route path='/' element={<Home />}/>
-                        <Route path='/:id' element={<Home />}/>
+                        <Route path='/post/:id' element={<Post />} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/:id' element={<Home />} />
                     </Routes>
                 </BrowserRouter>
                 <ReactQueryDevtools initialIsOpen={false} />
