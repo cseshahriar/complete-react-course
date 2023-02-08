@@ -9,7 +9,7 @@ import PostCreat from "./PostCreat";
 const fetchPosts = async (id) => {
     try {
         const { data } = await axios.get(
-            `https://gorest.co.in/public/v1/users/675/posts?page=${id}`
+            `https://gorest.co.in/public/v1/posts?page=${id}`
         );
         return data;
     } catch(error) {
@@ -44,7 +44,6 @@ const Home = () => {
                             ?  <Grid placeItems="center" height="100vh">{error}</Grid>
                             : (
                             <>
-                                <PostCreat />
                                 <Flex justify="space-between" mb="4">
                                     <Button
                                         colorScheme="green"

@@ -8,7 +8,7 @@ import {useParams, useNavigate} from "react-router-dom";
 const fetchPost = async (id) => {
     try {
         const { data } = await axios.get(
-            `https://gorest.co.in/public/v1/posts/${id}`
+            `https://gorest.co.in/public/v2/users/319739/posts/${id}`
         );
         return data;
     } catch(error) {

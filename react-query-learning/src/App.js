@@ -16,6 +16,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 
 import Home from "./Components/Home";
 import Post from "./Components/Post";
+import PostCreat from "./Components/PostCreat";
 
 const App = () => {
 
@@ -28,6 +29,7 @@ const App = () => {
                         <Route path='/post/:id' element={<Post />} />
                         <Route path='/' element={<Home />} />
                         <Route path='/:id' element={<Home />} />
+                        <Route path='/post/create' element={<PostCreat />} />
                     </Routes>
                 </BrowserRouter>
                 <ReactQueryDevtools initialIsOpen={false} />

@@ -1,34 +1,35 @@
 import React from 'react';
 import { Form, Formik } from "formik";
 import {InputControl, SubmitButton, TextareaControl} from "formik-chakra-ui";
-import {Heading, Stack, useToast} from "@chakra-ui/react";
+import {Container, Heading, Stack, useToast} from "@chakra-ui/react";
 import { useMutation } from "react-query";
 import axios from "axios";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const addNewPost = async ({ title, body }) => {
     try {
         const { data } = await axios.post(
-            `https://gorest.co.in/public/v1/users/675/posts`,
+            `https://gorest.co.in/public/v2/users/319739/posts`,
             {
                 title,
                 body,
-                user: 675
             }, {
                 headers: {
-                    Authorization: "Bearer 7ec656aef69513df85dbf4ad4b4fa1eed923c8d83421266bf18383b3b9433362"
+                    Authorization: "Bearer f7b3aeeaf96b603009a3a1826ea6c938235d36ab6232fbe2c953d85064678db2"
                 }
             }
         );
         return data;
     } catch (error) {
-        throw Error(error.response.statusText);
+        throw Error(error.message);
     }
 }
 
 const PostCreat = () => {
+    const navigate = useNavigate();
     const toast = useToast();
 
-    const { isLoading, data, mutateAsync } = useMutation(
+    const { isLoading, data, mutateAsync, isSuccess } = useMutation(
         'addNewPost',
         addNewPost,
         {
@@ -38,8 +39,14 @@ const PostCreat = () => {
         }
     );
 
+    console.log(data);
+    if(isSuccess) {
+        toast({ status: "success", title: 'Post created' });
+        navigate('/');
+    }
+
     return (
-        <div>
+        <Container maxW="1300px" mt="4">
             <Formik
                 initialValues={{title: '', body: ''}}
                 onSubmit={ async (values) => {
@@ -59,7 +66,7 @@ const PostCreat = () => {
                     </Stack>
                 </Form>
             </Formik>
-        </div>
+        </Container>
     );
 };
 
