@@ -5,6 +5,7 @@ import { useQuery } from 'react-query'
 import {Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast} from "@chakra-ui/react";
 import {useParams, useNavigate} from "react-router-dom";
 import {fetchPost} from "../api";
+import PostCreat from "./PostCreat";
 
 const Post = () => {
     const {id} = useParams();
@@ -27,6 +28,7 @@ const Post = () => {
                             ?  <Grid placeItems="center" height="100vh">{error}</Grid>
                             : (
                                 <>
+                                    <PostCreat isUpdate={true} id={data.data.id} />
                                     {
                                         <Stack key={data.data.id} mb="4" mt="2" p="4" boxShadow="md" borderRadius="x1" border="1px solid #ccc">
                                             <Flex justify="space-between">

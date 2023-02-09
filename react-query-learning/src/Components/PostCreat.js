@@ -5,24 +5,50 @@ import { Container, Heading, Stack, useToast} from "@chakra-ui/react";
 import { useMutation, useQueryClient} from "react-query";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { addNewPost } from "../api";
+import {addNewPost, updatePost} from "../api";
 
-const PostCreat = () => {
+const PostCreat = ({isUpdate, id}) => {
     const cache = useQueryClient();
     const navigate = useNavigate();
     const toast = useToast();
 
     const { isLoading, data, mutateAsync, isSuccess } = useMutation(
-        'addNewPost',
-        addNewPost,
+        isUpdate ? "updatePost" : "addNewPost",
+        isUpdate ? updatePost : addNewPost,
         {
             onSuccess: () => {
-                cache.invalidateQueries('posts'); // cache clear
+                isUpdate
+                    ? cache.invalidateQueries(['post', parseInt(id)])
+                    : cache.invalidateQueries('posts');
+
+                // cache clear
                 navigate('/');
+
                 toast({ status: "success", title: 'Post created' });
+            },
+            onMutate: async (addNewPost) => {
+                if(isUpdate) {
+                    // cancel any outgoing refetches
+                    await cache.cancelQueries("post");
+
+                    // shanpshot the previous value
+                    const previousPost = cache.getQueriesData(["post", id.toString()]);
+                    console.log(addNewPost);
+
+                    // optimistically update to the new value
+                    cache.setQueriesData(["post", id.toString()], (old) => {
+                        console.log(old);
+                        return {data: addNewPost};
+                    })
+                    // return
+                    return { previousPost };
+                }
             },
             onError: (error) => {
                 toast({ status: "error", title: error.message })
+            },
+            onSettled: () => {
+                // cache.invalidateQueries(["post", id.toString()])
             }
         }
     );
@@ -32,19 +58,19 @@ const PostCreat = () => {
             <Formik
                 initialValues={{title: '', body: ''}}
                 onSubmit={ async (values) => {
-                    await mutateAsync({
-                            title: values.title,
-                            body: values.body
-                        }
-                    )
+                isUpdate
+                    ?  await mutateAsync({title: values.title, body: values.body, id})
+                    : await mutateAsync({title: values.title, body: values.body})
                 }}
             >
                 <Form>
                     <Stack my="4">
-                        <Heading fontSize="2xl" textAlign="center">Add new post</Heading>
+                        <Heading fontSize="2xl" textAlign="center">
+                            { isUpdate ? "Update" : "Add"}
+                        </Heading>
                         <InputControl name="title" label="Title" mb="1" />
                         <TextareaControl name="body" label="Body" mb="2" />
-                        <SubmitButton>Save</SubmitButton>
+                        <SubmitButton>{isUpdate ? 'Save': 'Add New'} Post</SubmitButton>
                     </Stack>
                 </Form>
             </Formik>

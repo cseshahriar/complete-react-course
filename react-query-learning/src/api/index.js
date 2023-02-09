@@ -9,7 +9,22 @@ const api = axios.create({
 export const addNewPost = async ({ title, body }) => {
     try {
         const { data } = await api.post(
-            `users/319739/posts`,
+            `posts`,
+            {
+                title,
+                body,
+            }
+        );
+        return data;
+    } catch (error) {
+        throw Error(error.message);
+    }
+}
+
+export const updatePost = async ({ title, body, id}) => {
+    try {
+        const { data } = await api.patch(
+            `posts/${id}`,
             {
                 title,
                 body,
@@ -35,7 +50,7 @@ export const fetchPosts = async (id) => {
 export const fetchPost = async (id) => {
     try {
         const { data } = await api.get(
-            `users/319739/posts/${id}`
+            `posts/${id}`
         );
         return data;
     } catch(error) {
