@@ -4,17 +4,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query'
 import {Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast} from "@chakra-ui/react";
 import {useParams, useNavigate} from "react-router-dom";
-
-const fetchPost = async (id) => {
-    try {
-        const { data } = await axios.get(
-            `https://gorest.co.in/public/v2/users/319739/posts/${id}`
-        );
-        return data;
-    } catch(error) {
-        throw Error("Unable to fetch Post");
-    }
-}
+import {fetchPost} from "../api";
 
 const Post = () => {
     const {id} = useParams();

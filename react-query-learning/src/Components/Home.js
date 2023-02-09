@@ -5,17 +5,7 @@ import { useQuery } from 'react-query'
 import { Button, Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast } from "@chakra-ui/react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import PostCreat from "./PostCreat";
-
-const fetchPosts = async (id) => {
-    try {
-        const { data } = await axios.get(
-            `https://gorest.co.in/public/v1/posts?page=${id}`
-        );
-        return data;
-    } catch(error) {
-        throw Error("Unable to fetch Posts");
-    }
-}
+import {fetchPosts} from "../api";
 
 const Home = () => {
     const navigate = useNavigate();
@@ -30,7 +20,7 @@ const Home = () => {
             keepPreviousData: true
         }
     )
-    console.log('data', data);
+
     // if (isLoading) return  <Grid placeItems="center" height="100vh"><Spinner/></Grid>;
     if (error) return toast({status: "error", title: error.message});
 
