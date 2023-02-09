@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Formik } from "formik";
 import {InputControl, SubmitButton, TextareaControl} from "formik-chakra-ui";
 import {Container, Heading, Stack, useToast} from "@chakra-ui/react";
-import { useMutation } from "react-query";
+import {useMutation, useQueryClient} from "react-query";
 import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
@@ -26,6 +26,7 @@ const addNewPost = async ({ title, body }) => {
 }
 
 const PostCreat = () => {
+    const cache = useQueryClient();
     const navigate = useNavigate();
     const toast = useToast();
 
@@ -33,6 +34,9 @@ const PostCreat = () => {
         'addNewPost',
         addNewPost,
         {
+            onSuccess: () => {
+                cache.invalidateQueries('posts'); // cache clear
+            },
             onError: (error) => {
                 toast({ status: "error", title: error.message })
             }

@@ -30,7 +30,7 @@ const Home = () => {
             keepPreviousData: true
         }
     )
-
+    console.log('data', data);
     // if (isLoading) return  <Grid placeItems="center" height="100vh"><Spinner/></Grid>;
     if (error) return toast({status: "error", title: error.message});
 
@@ -63,7 +63,7 @@ const Home = () => {
                                     > Next</Button>
                                 </Flex>
                                 {
-                                    data.data.map((post) => (
+                                   data.data && data.data.map((post) => (
                                         <Link to={`/post/${post.id}`} key={post.id}>
                                             <Stack mb="4" mt="2" p="4" boxShadow="md" borderRadius="x1" border="1px solid #ccc">
                                                 <Flex justify="space-between">
