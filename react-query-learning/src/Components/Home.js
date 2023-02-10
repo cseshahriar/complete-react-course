@@ -1,25 +1,42 @@
 import React from 'react';
 import axios from 'axios';
 
-import { useQuery } from 'react-query'
+import {useMutation, useQuery, useQueryClient} from 'react-query'
 import { Button, Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast } from "@chakra-ui/react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import PostCreat from "./PostCreat";
-import {fetchPosts} from "../api";
+import {fetchPosts, deletePost} from "../api";
 
 const Home = () => {
+    const cache = useQueryClient();
+
     const navigate = useNavigate();
     const {id} = useParams();
     const pageId = parseInt(id) || parseInt(1);
 
     const toast = useToast();
+
     const { isLoading, error, data } = useQuery(
         ['posts', pageId],
         () => fetchPosts(pageId),
         {
             keepPreviousData: true
         }
-    )
+    );
+
+    const { isLoading: isMutating, mutateAsync } = useMutation(
+        'deletePost',
+        deletePost,
+        {
+            onError: (error) => {
+                toast({status: 'error', title: error.message});
+            },
+            onSuccess: () => {
+                cache.invalidateQueries('posts');
+            }
+
+        }
+    );
 
     // if (isLoading) return  <Grid placeItems="center" height="100vh"><Spinner/></Grid>;
     if (error) return toast({status: "error", title: error.message});
@@ -52,20 +69,33 @@ const Home = () => {
                                             navigate(`/${pageId + 1}`)
                                         }}
                                     > Next</Button>
+
                                 </Flex>
                                 {
                                    data.data && data.data.map((post) => (
-                                        <Link to={`/post/${post.id}`} key={post.id}>
+
                                             <Stack mb="4" mt="2" p="4" boxShadow="md" borderRadius="x1" border="1px solid #ccc">
+
                                                 <Flex justify="space-between">
                                                     <Text>User Id: { post.user_id }</Text>
                                                     <Text>Post Id: { post.id } </Text>
+
+                                                    <Flex>
+                                                        <Button
+                                                            size="sm"
+                                                            isLoading={isMutating}
+                                                            onClick={async () => {
+                                                                await mutateAsync({id: post.id})
+                                                            }}
+                                                        >Delete</Button>
+                                                    </Flex>
                                                 </Flex>
-                                                <Heading>{ post.title }</Heading>
+
+                                                <Heading>
+                                                    <Link to={`/post/${post.id}`} key={post.id}>{ post.title }</Link>
+                                                </Heading>
                                                 <Text>{ post.body }</Text>
                                             </Stack>
-                                        </Link>
-
                                     ))
                                 }
                             </>

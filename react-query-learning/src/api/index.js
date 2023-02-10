@@ -14,7 +14,7 @@ export const addNewPost = async ({ title, body }) => {
             {
                 title,
                 body,
-                user_id:694 // use edit
+                user_id:696 // use edit
             }
         );
         return data;
@@ -31,6 +31,17 @@ export const updatePost = async ({ title, body, id}) => {
                 title,
                 body,
             }
+        );
+        return data;
+    } catch (error) {
+        throw Error(error.message);
+    }
+}
+
+export const deletePost = async ({ id}) => {
+    try {
+        const { data } = await api.delete(
+            `posts/${id}`,
         );
         return data;
     } catch (error) {
