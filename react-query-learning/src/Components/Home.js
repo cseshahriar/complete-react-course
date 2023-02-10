@@ -86,7 +86,7 @@ const Home = () => {
                                 {
                                    data.data && data.data.map((post) => (
 
-                                            <Stack mb="4" mt="2" p="4" boxShadow="md" borderRadius="x1" border="1px solid #ccc">
+                                            <Stack key={post.id} mb="4" mt="2" p="4" boxShadow="md" borderRadius="x1" border="1px solid #ccc">
 
                                                 <Flex justify="space-between">
                                                     <Text>User Id: { post.user_id }</Text>

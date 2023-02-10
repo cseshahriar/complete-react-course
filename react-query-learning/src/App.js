@@ -20,7 +20,15 @@ import PostCreat from "./Components/PostCreat";
 
 const App = () => {
 
-    const queryClient = new QueryClient()
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                refetchOnWindowFocus:false, // refetching off
+                refetchInterval: 1 //
+            }
+        }
+    });
+
     return (
         <ChakraProvider>
             <QueryClientProvider client={queryClient}>
