@@ -32,15 +32,15 @@ const PostCreat = ({isUpdate, id}) => {
                     await cache.cancelQueries("post");
 
                     // shanpshot the previous value
-                    const previousPost = cache.getQueriesData(["post", id.toString()]);
+                    const previousPost = cache.getQueriesData(["post", id]);
                     console.log(addNewPost);
 
                     // optimistically update to the new value
-                    cache.setQueriesData(["post", id.toString()], (old) => {
+                    cache.setQueriesData(["post", id], (old) => {
                         console.log(old);
                         return {data: addNewPost};
                     })
-                    // return
+                    // return a context object with the snapshotted value
                     return { previousPost };
                 }
             },

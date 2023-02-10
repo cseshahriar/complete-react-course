@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const api = axios.create({
     baseURL: process.env.REACT_APP_URL,
     headers: {
@@ -13,6 +14,7 @@ export const addNewPost = async ({ title, body }) => {
             {
                 title,
                 body,
+                user_id:694 // use edit
             }
         );
         return data;

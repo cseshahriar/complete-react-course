@@ -34,6 +34,7 @@ const Home = () => {
                             ?  <Grid placeItems="center" height="100vh">{error}</Grid>
                             : (
                             <>
+                                <PostCreat />
                                 <Flex justify="space-between" mb="4">
                                     <Button
                                         colorScheme="green"
