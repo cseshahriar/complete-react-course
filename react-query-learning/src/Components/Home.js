@@ -5,7 +5,7 @@ import {useMutation, useQuery, useQueryClient} from 'react-query'
 import { Button, Container, Flex, Grid, Heading, Spinner, Stack, Text, useToast } from "@chakra-ui/react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import PostCreat from "./PostCreat";
-import {fetchPosts, deletePost} from "../api";
+import {fetchPosts, deletePost, fetchPost} from "../api";
 
 const Home = () => {
     const cache = useQueryClient();
@@ -16,13 +16,25 @@ const Home = () => {
 
     const toast = useToast();
 
-    const { isLoading, error, data } = useQuery(
+    const { isLoading, error, data, isSuccess } = useQuery(
         ['posts', pageId],
         () => fetchPosts(pageId),
         {
             keepPreviousData: true
         }
     );
+
+    // dependent query
+    const {data: singlePost} = useQuery(
+        ['post', 18335],
+        () => fetchPost(18335),
+        {
+            enabled: isSuccess // dependent query
+        }
+    )
+    console.log('post', singlePost);
+    console.log('posts', data);
+
 
     const { isLoading: isMutating, mutateAsync } = useMutation(
         'deletePost',
