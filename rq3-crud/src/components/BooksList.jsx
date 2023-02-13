@@ -4,6 +4,7 @@ import {getAllBooks} from "../api";
 import Container from "./Container";
 import { Flex } from "rebass/styled-components";
 import { ThreeDots } from "react-loader-spinner";
+import BookItem from "./BookItem";
 
 const BooksList = () => {
     const { data, error, isLoading, isError } = useQuery(
@@ -34,12 +35,10 @@ const BooksList = () => {
 
     return (
         <Container>
-            <Flex py="5" justifyContent="center" flexDirection="column" alignItems="center">
+            <Flex flexDirection="column" alignItems="center">
                 {
                     data.map(({author, title, id}) => (
-                        <div key={id}>
-                            {author} - {title}
-                        </div>
+                        <BookItem author={author} title={title} id={id} key={id} />
                     ))
                 }
             </Flex>
