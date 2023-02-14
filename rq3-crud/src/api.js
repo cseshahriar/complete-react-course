@@ -15,7 +15,7 @@ export const  getBook = async ({ queryKey }) => {
     if(!response.ok) {
         throw new Error(response.json().message)
     }
-    return true
+    return response.json()
 }
 
 export const updateBook = async ({id, ...data}) => {

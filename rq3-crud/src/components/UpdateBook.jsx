@@ -11,9 +11,8 @@ import BookForm from "./BookForm";
 const UpdateBook = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    console.log(id);
-
     const { data, error, isLoading, isError } = useQuery(['book', {id}], getBook);
+    console.log('fetch data', data);
 
     const { mutateAsync, isLoading: isMutating } = useMutation(updateBook);
 
@@ -47,7 +46,11 @@ const UpdateBook = () => {
         <Container>
             <Box sx={{py: 3}}>
                 <Heading sx={{marginBottom: 3}}>Update  Book</Heading>
-                <BookForm defaultValues={data} onFormSubmit={onFormSubmit} isLoading={isMutating} />
+                <BookForm
+                    defaultValues={data}
+                    onFormSubmit={onFormSubmit}
+                    isLoading={isMutating}
+                />
             </Box>
         </Container>
     );
