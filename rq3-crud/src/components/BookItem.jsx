@@ -1,7 +1,7 @@
 import React from 'react';
 import {Flex, Text, Button, Link as StyledLink } from "rebass/styled-components";
 import { Link } from "react-router-dom";
-import {QueryClient, useMutation, useQueryClient} from "react-query";
+import { useMutation, useQueryClient} from "react-query";
 import {removeBook} from "../api";
 
 import { ThreeDots } from "react-loader-spinner";
