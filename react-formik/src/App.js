@@ -1,20 +1,49 @@
 import React from "react";
-import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik';
-import * as Yup from "yup";
+import { Formik, Form, Field, FieldArray } from 'formik';
+import * as yup from "yup";
 
 import CustomErrorMessage from "./components/CustomErrorMessage";
 
-const validationSchema = Yup.object().shape({
-    name: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Name is required'),
-    phone: Yup.number().min(11, 'Invalid').required('Phone is required'),
-    password: Yup.string().min(7, 'Password should be min 7').required('Password is required'),
-    gender: Yup.string().required('Gender is required'),
-    dob: Yup.date().required('Date of Birth is required'),
-    income: Yup.string().required('Income is required'),
-    about: Yup.string().required('About is required'),
-    social: Yup.mixed().required('Social is required'),
-    hobbies: Yup.array().required('Hobbies is required'),
+const validationSchema = yup.object().shape({
+    name: yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Name is required'),
+    phone: yup.string()
+        .min(11, 'Invalid phone number')
+        .required('Phone is required'),
+    password: yup.string()
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+            "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+        )
+        .min(7, 'Password must be at least 7')
+        .required('Password is required'),
+    gender: yup.string().required('Gender is required'),
+    dob: yup.date().required('Date of Birth is required'),
+    income: yup.number().required('Income is required'),
+    about: yup.string().min(3).required('About is required'),
+    social: yup
+        .array()
+        .of(
+            yup
+                .string("String is required")
+                .min(4, "Too short")
+                .max(20, "Too long")
+                .required("Required")
+        )
+        .min(1, "At least one social media is required!")
+        .required('Required'),
+    hobbies: yup
+        .array()
+        .of(
+            yup
+                .string("String is required")
+                .min(4, "Too short")
+                .max(20, "Too long")
+                .required("Required")
+        )
+        .min(1, "At least one social media is required!")
+        .required('Required'),
 });
+
 
 function App() {
   return (
@@ -32,11 +61,8 @@ function App() {
                       dob: "",
                       income: 0,
                       about: "",
-                      social: {
-                          facebook: '',
-                          twitter: ''
-                      },
-                      hobbies: [""]
+                      social: [],
+                      hobbies: []
                   }
                 }
                   validationSchema={validationSchema}
@@ -104,11 +130,12 @@ function App() {
                                   <label className="form-label" htmlFor="social">Social</label><br/>
 
                                   <label className="form-label" htmlFor="social">Facebook</label>
-                                  <Field name="social.facebook" type="text"  className="form-control"/>
+                                  <Field name="social[0]" type="text"  className="form-control"/>
+                                  <CustomErrorMessage name="social.0" />
 
                                   <label className="form-label" htmlFor="social">Twitter</label>
-                                  <Field name="social.twitter" type="text"  className="form-control"/>
-                                  <CustomErrorMessage name="social" />
+                                  <Field name="social.1" type="text"  className="form-control"/>
+                                  <CustomErrorMessage name="social.1" />
                               </div>
 
                               <div className="form-group">
@@ -123,12 +150,14 @@ function App() {
                                                           values.hobbies.map((hobby, index) => (
                                                               <div key={index}>
                                                                   <Field name={`hobbies.${index}`} />
+                                                                  <CustomErrorMessage name={`hobbies.${index}` } />
                                                                   <button type="button" onClick={() => arrayHelpers.remove(index)}>-</button>
                                                               </div>
                                                           ))
                                                       }
                                                   </div>
                                                   <button type="button" onClick={() => arrayHelpers.push('')}>Add Hobby</button>
+                                                  <CustomErrorMessage name={`hobbies`} />
                                               </>
                                           )
                                     }
