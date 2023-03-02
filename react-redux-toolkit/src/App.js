@@ -10,6 +10,7 @@ function App() {
           <header className="App-header">
               <h1>React Redux Toolkit</h1>
               <Counter />
+              <Coin />
           </header>
         </div>
     );
