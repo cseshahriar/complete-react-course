@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from 'react-redux'
 const Coin = () => {
     // access reducer
     const count = useSelector((state) => state.counter.count)
-
+    const color = useSelector((state) => state.theme.color)
 
     return (
         <div>
-            <span >Coin Count: { count }</span>
+            <span style={{color: color }}>Coin Count: { count }</span>
         </div>
     );
 };

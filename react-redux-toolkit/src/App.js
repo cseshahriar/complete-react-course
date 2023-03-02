@@ -3,6 +3,7 @@ import './App.css';
 
 import Counter from './features/counter/Counter';
 import Coin from "./features/coin/Coin";
+import Theme from "./features/theme/Theme";
 function App() {
 
     return (
@@ -11,6 +12,7 @@ function App() {
               <h1>React Redux Toolkit</h1>
               <Counter />
               <Coin />
+              <Theme />
           </header>
         </div>
     );
