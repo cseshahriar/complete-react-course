@@ -1,11 +1,11 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 
-import { useGetAllPostByIdQuery } from './services/post';
+import { useGetPostByIdQuery } from './services/post';
 
 const Post = () => {
     const { post_id } = useParams();
-    const { data, error, isLoading } = useGetAllPostByIdQuery(post_id);
+    const { data, error, isLoading } = useGetPostByIdQuery(post_id);
 
     console.log(data)
 

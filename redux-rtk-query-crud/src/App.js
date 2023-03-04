@@ -1,10 +1,11 @@
 import './App.css';
 
-import { useGetAllPostQuery } from './services/post';
+import { useGetAllPostQuery, useDeletePostMutation } from './services/post';
 import { Link } from "react-router-dom";
 
 function App() {
     const { data, error, isLoading } = useGetAllPostQuery();
+    const [deletePost, responseInfo] = useDeletePostMutation();
 
     return (
     <div className="container py-5">
@@ -18,7 +19,7 @@ function App() {
                     <>
                         <h3>All Post
                             <span className='d-inline-block float-end'>
-                                <a className='btn btn-sm btn-primary'>Add New</a>
+                                <Link to='/posts/create'>Add New</Link>
                             </span>
                         </h3>
 
@@ -42,8 +43,9 @@ function App() {
                                                 </Link>
                                             </td>
                                             <td>
-                                                <a className='btn btn-sm btn-info'>Edit</a>
-                                                <a className='btn btn-sm btn-danger ms-1'>Delete</a>
+                                                <Link to={`/posts/${post.id}/edit`} className='btn btn-sm btn-info'>Edit</Link>
+                                                <button onClick={() => { deletePost(post.id) }} className='btn btn-sm btn-danger ms-1'>Delete</button>
+
                                             </td>
                                         </tr>
                                     ))
