@@ -24,16 +24,15 @@ const Counter = () => {
         <section>
             <p>{ count }</p>
             <div>
-                <button onClick={() => dispatch(increment())}>Increment</button>
-                <button onClick={() => dispatch(decrement())}>Decrement</button>
+                <button className='btn btn-primary' onClick={() => dispatch(increment())}>Increment</button>
+                <button className='btn btn-danger ms-2' onClick={() => dispatch(decrement())}>Decrement</button>
                 
-                <br/>
-                <input type="number" value={incrementAmount} 
-                onChange={(e) => setIncrementAmount(e.target.value)} />
-                <br/>
+                <input className='form-control mt-2 mb-2' type="number" value={incrementAmount} 
+                    onChange={(e) => setIncrementAmount(e.target.value)} />
+            
 
-                <button onClick={() => dispatch(resetAll())}>Reset</button>
-                <button onClick={() => dispatch(incrementByAmount(addValue))}>Add Amount</button>
+                <button className='btn btn-primary' onClick={() => dispatch(resetAll())}>Reset</button>
+                <button className='btn btn-danger ms-2' onClick={() => dispatch(incrementByAmount(addValue))}>Add Amount</button>
             </div>
         </section>
     );
