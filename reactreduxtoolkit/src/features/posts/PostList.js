@@ -1,7 +1,11 @@
 import { useSelector } from "react-redux";
 import React from 'react'
 
-import { selectAllPosts } from "./postsSlice";
+import { postAdded, selectAllPosts } from "./postsSlice";
+
+import PostAuthor from "./PostAuthor";
+import TimeAgo from './TimeAgo';
+
 
 const PostList = () => {
     // receive data from state
@@ -12,13 +16,17 @@ const PostList = () => {
         <article key={post.id}>
             <h3>{post.title}</h3>
             <p>{post.content.substring(0, 100)}</p>
+            <p>
+                <PostAuthor userId={post.user} />
+                <TimeAgo timestamp={post.date} />
+            </p>
         </article>
     ))
 
     return (
         <section className="py-5">
-            <div class="card">
-                <div class="card-header">Posts</div>
+            <div className="card">
+                <div className="card-header">Posts</div>
                 { renderedPosts }
             </div>
         </section>
