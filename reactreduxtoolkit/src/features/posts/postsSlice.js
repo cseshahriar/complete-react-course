@@ -3,8 +3,32 @@ import { sub } from 'date-fns';
 
 // initial state
 const initialState = [
-    {id: '1', title: 'Learn Redux', content: 'Learn Redux toolkit', date: sub(new Date(), { minutes: 10}).toISOString()},
-    {id: '2', title: 'Learn Redux toolkit', content: 'Learn Redux toolkit', date: sub(new Date(), { minutes: 10}).toISOString()},
+    {
+        id: '1', 
+        title: 'Learn Redux', 
+        content: 'Learn Redux toolkit',
+        date: sub(new Date(), { minutes: 10}).toISOString(),
+        reactions: {
+            thumbsUp: 0,
+            wow: 0,
+            heart: 0,
+            rocket: 0,
+            coffee: 0
+        }
+    },
+    {
+        id: '2',
+        title: 'Learn Redux',
+        content: 'Learn Redux',
+        date: sub(new Date(), { minutes: 5}).toISOString(),
+        reactions: {
+            thumbsUp: 0,
+            wow: 0,
+            heart: 0,
+            rocket: 0,
+            coffee: 0
+        }
+    },
 ]
 
 const postsSlice = createSlice({
@@ -15,16 +39,30 @@ const postsSlice = createSlice({
             reducer(state, action) {
                 state.push(action.payload); // payload is form data
             },
-            prepare(title, content, userId, date) {
+            prepare(title, content, userId) {
                 return {
                     payload: {
                         id: nanoid(),
                         title,
                         content,
-                        date: new Date().toDateString(),
-                        userId
+                        date: new Date().toISOString(),
+                        userId,
+                        reactions: {
+                            thumbsUp: 0,
+                            wow: 0,
+                            heart: 0,
+                            rocket: 0,
+                            coffee: 0
+                        }
                     }
                 }
+            }
+        },
+        reactionAdded(state, action) {
+            const { postId, reaction } = action.payload
+            const existingPost = state.find(post => post.id === postId)
+            if(existingPost) {
+                existingPost.reactions[reaction]++
             }
         }
     }
@@ -33,6 +71,6 @@ const postsSlice = createSlice({
 
 export const selectAllPosts = (state) => state.posts; // return all posts
 
-export const { postAdded } = postsSlice.actions;
+export const { postAdded, reactionAdded } = postsSlice.actions;
 
 export default postsSlice.reducer;
